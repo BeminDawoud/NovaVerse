@@ -1,8 +1,7 @@
 # ALX Portfolio Project
 
-## Autjors
-
----
+## Authors
 
 Bemin Dawoud: (https://github.com/BeminDawoud)
+
 Maria George: (https://github.com/MariaGeorge22)
