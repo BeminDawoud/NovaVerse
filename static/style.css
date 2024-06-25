@@ -15,14 +15,14 @@ body{
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: black;
+  background: linear-gradient(#000, rgb(3, 28, 55));
 }
 
 .wrapper{
   position: relative;
   height: 600px;
   width: 400px;
-  background-color: #000;
+  background: linear-gradient(#000, rgb(3, 28, 55));
   box-shadow: 0 0 50px var(--main-color);
   border-radius: 20px;
   padding: 40px;
