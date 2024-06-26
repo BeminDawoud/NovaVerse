@@ -2,6 +2,7 @@
 
 :root{
   --main-color: rgb(127, 189, 255);
+  --gradient--colour: rgb(3, 28, 55);
 }
 
 *{
@@ -15,14 +16,14 @@ body{
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(#000, rgb(3, 28, 55));
+  background: linear-gradient(#000, var(--gradient--colour));
 }
 
 .wrapper{
   position: relative;
   height: 600px;
   width: 400px;
-  background: linear-gradient(#000, rgb(3, 28, 55));
+  background: linear-gradient(#000, var(--gradient--colour));
   box-shadow: 0 0 50px var(--main-color);
   border-radius: 20px;
   padding: 40px;
