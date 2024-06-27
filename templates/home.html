@@ -3,8 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link rel="stylesheet" href="../static/home.css">
+	<link rel="icon" type="image/png" href="../Img/Log/NovaVerse.png">
 	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 	<title>Home</title>
 </head>
@@ -121,7 +121,7 @@
 					<a class="menu-item">
 						<span><i class='bx bxs-analyse' ></i></span><h3>Analytics</h3>
 					</a>
-					<a class="menu-item">
+					<a class="menu-item" id="theme">
 						<span><i class='bx bxs-palette' ></i></span><h3>Themes</h3>
 					</a>
 					<a class="menu-item">
@@ -383,10 +383,118 @@
 	
 			<!-- ================ right ================ -->
 			<div class="right">
-				
+				<!-- ================ friend requests ================ -->
+				<div class="friend-requests">
+					<h4>Requests</h4>
+					<div class="request">
+						<div class="info">
+							<div class="profile-photo">
+								<img src="../Img/profile-14.jpg" alt="">
+							</div>
+							<div>
+								<h5>Thor Oden</h5>
+								<p class="text-muted">
+									5 Mutual friends
+								</p>
+							</div>
+						</div>
+						<div class="action">
+							<button class="btn btn-primary">Accept</button>
+							<button class="btn">Decline</button>
+						</div>
+					</div>
+					<div class="request">
+						<div class="info">
+							<div class="profile-photo">
+								<img src="../Img/profile-15.jpg" alt="">
+							</div>
+							<div>
+								<h5>Oden</h5>
+								<p class="text-muted">
+									7 Mutual friends
+								</p>
+							</div>
+						</div>
+						<div class="action">
+							<button class="btn btn-primary">Accept</button>
+							<button class="btn">Decline</button>
+						</div>
+					</div>
+					<div class="request">
+						<div class="info">
+							<div class="profile-photo">
+								<img src="../Img/profile-16.jpg" alt="">
+							</div>
+							<div>
+								<h5>Loki Oden</h5>
+								<p class="text-muted">
+									8 Mutual friends
+								</p>
+							</div>
+						</div>
+						<div class="action">
+							<button class="btn btn-primary">Accept</button>
+							<button class="btn">Decline</button>
+						</div>
+					</div>
+				</div>
 			</div>
 		 </div>
 	 </main>
+
+	 <!-- ================ themes ================ -->
+	 <div class="customized-theme">
+		<div class="card">
+			<h2>Customize your view</h2>
+			<p class="text-muted">Manage your font size, color, and background.</p>
+
+			<!-- ================ Font Size ================ -->
+			<div class="font-size">
+				<h4>Font Size</h4>
+				<div>
+					<h6>Aa</h6>
+					<div class="choose-size">
+						<span class="font-size-1 "></span>
+						<span class="font-size-2"></span>
+						<span class="font-size-3 active"></span>
+						<span class="font-size-4"></span>
+						<span class="font-size-5"></span>
+					</div>
+					<h3>Aa</h3>
+				</div>
+			</div>
+
+			<!-- ================ Primary Colours ================ -->
+			 <div class="color">
+				<h4>Color</h4>
+				<div class="choose-color">
+					<span class="color-1 active"></span>
+					<span class="color-2"></span>
+					<span class="color-3"></span>
+					<span class="color-4"></span>
+					<span class="color-5"></span>
+				</div>
+			 </div>
+			<!-- ================ Background Colours ================ -->
+			 <div class="background">
+				<h4>Background</h4>
+				<div class="choose-bg">
+					<div class="bg-1 active">
+						<span></span>
+						<h5 for="bg-1">Light</h5>
+					</div>
+					<div class="bg-2">
+						<span></span>
+						<h5 for="bg-2">Dim</h5>
+					</div>
+					<div class="bg-3">
+						<span></span>
+						<h5 for="bg-3">Lights Out</h5>
+					</div>
+				</div>
+			 </div>
+		</div>
+	 </div>
 	 <script src="../static/home.js"></script>
 </body>
 </html>
