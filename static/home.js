@@ -5,7 +5,10 @@ const theme = document.querySelector('#theme');
 const themeModel = document.querySelector('.customized-theme');
 const fontSizes = document.querySelectorAll('.choose-size span');
 const colorPalette = document.querySelectorAll('.choose-color span');
-const root = document.querySelector(':root')
+const root = document.querySelector(':root');
+const bg1 = document.querySelector('.bg-1');
+const bg2 = document.querySelector('.bg-2');
+const bg3 = document.querySelector('.bg-3');
 
 
 // *******************Side-Bar*************************
@@ -112,4 +115,41 @@ colorPalette.forEach(color => {
 
 		root.style.setProperty('--primary-color-hue', primaryHue)
 	})
+})
+
+
+// ************************ change background ********************
+
+bg1.addEventListener('click', () => {
+	bg2.classList.remove('active');
+	bg3.classList.remove('active');
+	bg1.classList.add('active');
+	root.style.setProperty('--colour-primary', 'hsl(252, 30%, 100%)');
+	root.style.setProperty('--colour-primary-theme', '10, 41, 73');
+	root.style.setProperty('--colour-secondary', 'hsl(252, 30%, 95%)');
+	document.querySelector('body').style.color = 'black';
+
+})
+
+bg2.addEventListener('click', () => {
+	bg1.classList.remove('active');
+	bg3.classList.remove('active');
+	bg2.classList.add('active');
+	root.style.setProperty('--colour-primary', 'hsl(213, 89%, 12%)');
+	root.style.setProperty('--colour-primary-theme', '10, 41, 73');
+	root.style.setProperty('--colour-secondary', 'hsl(210, 75%, 16%)');
+	document.querySelector('body').style.color = 'white';
+
+})
+
+bg3.addEventListener('click', () => {
+	bg1.classList.remove('active');
+	bg2.classList.remove('active');
+	bg3.classList.add('active');
+	root.style.setProperty('--colour-primary', 'hsl(270, 89%, 12%)');
+	root.style.setProperty('--colour-primary-theme', '32, 0, 32');
+	root.style.setProperty('--colour-secondary', 'hsl(270, 89%, 16%)');
+	document.querySelector('body').style.color = 'white';
+
+	
 })

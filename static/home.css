@@ -2,18 +2,15 @@
 
 :root{
   --primary-color-hue: 210;
-  --primary-colour-lightness: 12%;
-  --secondary-colour-lightness: 16%;
   --btn-color: hsl(var(--primary-color-hue), 100%, 78%);
-  --colour-dark: hsl(252, 30%, 17%);
   --colour-white: hsl(252, 30%, 100%);
   --colour-light: hsl(252, 30%, 95%);
   --colour-gray: hsl(252, 15%, 65%);
-  --colour-primary: hsl(213, 89%, var(--primary-colour-lightness));
-  --colour-secondary: hsl(210, 75%, var(--secondary-colour-lightness));
+  --colour-primary: hsl(213, 89%, 12%);
+  --colour-primary-theme: 10, 41, 73;
+  --colour-secondary: hsl(210, 75%, 16%);
   --colour-success: hsl(120, 95%, 65%);
   --colour-danger: hsl(0, 95%, 65%);
-  --colour-black: hsl(252, 30%, 10%);
   --border-radius: 2rem;
   --card-border-radius: 1rem;
   --btn-padding: 0.6rem 2rem;
@@ -21,6 +18,8 @@
   --card-padding: 1rem;
   --sticky-top-left: 5.4rem;
   --sticky-top-right: -18rem;
+  --test: hsl(270, 89%, 12%);
+  --test: hsl(270, 89%, 16%);
 }
 
 *{
@@ -387,7 +386,7 @@ main .container .right{
 
 /*================ Theme Customization ================*/
 .customized-theme{
-	background: rgba(10, 41, 73, 0.8);
+	background: rgba(var(--colour-primary-theme), 0.8);
 	width: 100vw;
 	height: 100vh;
 	position: fixed;
@@ -520,7 +519,7 @@ main .container .right{
 }
 
 .customized-theme .choose-bg .bg-2{
-	background: rgb(9, 3, 113);
+	background: hsl(213, 89%, 12%);
 	color: rgb(255, 255, 255);
 }
 
@@ -537,6 +536,9 @@ main .container .right{
 	margin-right: 1rem;
 }
 
+.customized-theme .choose-bg > div.active span{
+	background: var(--btn-color);
+}
 
 /*--------------------------Media Query--------------------------*/
 @media screen and (max-width: 1200px) {
