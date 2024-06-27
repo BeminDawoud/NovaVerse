@@ -370,6 +370,7 @@ main .container .right{
 	padding: var(--card-padding);
 	border-radius: var(--card-border-radius);
 	margin-bottom: 0.7rem;
+	width: max-content;
 }
 
 .right .request .info{
@@ -571,6 +572,7 @@ main .container .right{
 	main .container .left{
 		grid-column: 3/4;
 		position: fixed;
+		top: 5rem;
 		bottom: 0;
 		right: 0;
 	}
@@ -580,9 +582,9 @@ main .container .right{
 		width: 20rem;
 	}
 	.left .notifications-popup::before{
-		display: absolute;
+		position: absolute;
 		top: 1.3rem;
-		left: calc(20rem- 0.6rem);
+		left: calc(20rem - 0.6rem);
 		display: block;
 	}
 	main .container .left .sidebar > div h3{
