@@ -524,7 +524,7 @@ main .container .right{
 }
 
 .customized-theme .choose-bg .bg-3{
-	background: rgb(32, 0, 32);
+	background: hsl(270, 89%, 12%);
 	color: rgb(255, 255, 255);
 }
 
