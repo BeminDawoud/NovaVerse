@@ -57,19 +57,6 @@ body{
   transition: 1s ease-in-out;
 }
 
-.wrapper.active .form-wrapper.sign-in{
-  transform: translateY(-570px);
-}
-
-.wrapper .form-wrapper.sign-up{
-  position: absolute;
-  top: 570px;
-  left: 0;
-}
-
-.wrapper.active .form-wrapper.sign-up{
-  transform: translateY(-570px);
-}
 
 h2{
   font-size: 30px;
