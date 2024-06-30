@@ -9,20 +9,21 @@ const root = document.querySelector(':root');
 const bg1 = document.querySelector('.bg-1');
 const bg2 = document.querySelector('.bg-2');
 const bg3 = document.querySelector('.bg-3');
+const contacts = document.querySelectorAll(".contact")
 
 
 // *******************Side-Bar*************************
 // remove class active from all items
-const changeActiveItem = () => {
-	menuItems.forEach(item => {
+const changeActiveItem = (items) => {
+	items.forEach(item => {
 		item.classList.remove("active");
 	})
 }
 
-// Add active class in item clicked
+// Add active class in menu-item clicked
 menuItems.forEach(item => {
 	item.addEventListener("click", () => {
-		changeActiveItem();
+		changeActiveItem(menuItems);
 		item.classList.add("active");
 		if(item.id != "notifications"){
 			document.querySelector('.notifications-popup').style.display = 'none';
@@ -30,6 +31,14 @@ menuItems.forEach(item => {
 			document.querySelector('.notifications-popup').style.display = 'block';
 			document.querySelector('#notifications .notifications-count').style.display = 'none';
 		}
+	})
+})
+
+// Add active class in messages clicked
+contacts.forEach(item => {
+	item.addEventListener("click", () => {
+		changeActiveItem(contacts);
+		item.classList.add("active");
 	})
 })
 
