@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../static/style/home.css">
+	<link rel="stylesheet" href="../static/style/profile.css">
+	<link rel="icon" type="image/png" href="../static/img/Log/NovaVerse.svg" sizes="32x32">
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+	<title>NovaVerse</title>
+</head>
+<body>
+	<!-- ================ NavBar ================ -->
+	<nav>
+		<div class="container">
+			<h2 class="logo">
+				NovaVerse
+			</h2>
+			<div class="search-bar">
+				<i class='bx bx-search'></i>
+				<input type="search" placeholder="Search NovaVerse">
+			</div>
+			<div class="create">
+				<label class="btn btn-primary" for="create-post">Create</label>
+				<div class="profile-photo">
+					<img src="../static/img/Log/NovaVerse.svg" alt="">
+				</div>
+			</div>
+		</div>
+	</nav>
+	<!-- ================ end of NavBar ================ -->
+
+
+	<!-- ================ main ================ -->
+	 <main>
+		<div class="container">
+			<!-- ================ left ================ -->
+			<div class="left">
+				<!-- ================ side-bar ================ -->
+				 <div class="sidebar">
+					<a class="menu-item">
+						<span><i class='bx bx-home'></i></span><h3>Home</h3>
+					</a>
+					<a class="menu-item" id="notifications">
+						<span><i class='bx bxs-bell'><small class="notifications-count">9+</small></i></span><h3>Notifications</h3>
+						<!-- ================ notification Pop-Up ================ -->
+						 <div class="notifications-popup">
+							<div>
+								<div class="profile-photo">
+									<img src="../static/img/profile-1.jpg">
+								</div>
+								<div class="notifications-body">
+									<b>Loki Oden</b> Accepted your friend request
+									<small class="text-muted">Days Ago</small>
+								</div>
+							</div>
+							<div>
+								<div class="profile-photo">
+									<img src="../static/img/profile-2.jpg">
+								</div>
+								<div class="notifications-body">
+									<b>Thor Oden</b> Commented on your post
+									<small class="text-muted">Days Ago</small>
+								</div>
+							</div>
+							<div>
+								<div class="profile-photo">
+									<img src="../static/img/profile-3.jpg">
+								</div>
+								<div class="notifications-body">
+									<b>Hella Oden</b> liked your post
+									<small class="text-muted">Days Ago</small>
+								</div>
+							</div>
+							<div>
+								<div class="profile-photo">
+									<img src="../static/img/profile-4.jpg">
+								</div>
+								<div class="notifications-body">
+									<b>Oden</b> Accepted your friend request
+									<small class="text-muted">Days Ago</small>
+								</div>
+							</div>
+							<div>
+								<div class="profile-photo">
+									<img src="../static/img/profile-5.jpg">
+								</div>
+								<div class="notifications-body">
+									<b>Loki</b> Accepted your friend request
+									<small class="text-muted">Days Ago</small>
+								</div>
+							</div>
+							<div>
+								<div class="profile-photo">
+									<img src="../static/img/profile-6.jpg">
+								</div>
+								<div class="notifications-body">
+									<b>Loki</b> Accepted your friend request
+									<small class="text-muted">Days Ago</small>
+								</div>
+							</div>
+						 </div>
+					</a>
+					<a class="menu-item" id="messages-notifications">
+						<span><i class='bx bxs-message-dots'><small class="notifications-count">6</small></i></span><h3>Messages</h3>
+					</a>
+					<a class="menu-item">
+						<span><i class='bx bxs-bookmarks'></i></span><h3>Bookmarks</h3>
+					</a>
+					<a class="menu-item">
+						<span><i class='bx bxs-compass'></i></span><h3>Explore</h3>
+					</a>
+					<a class="menu-item">
+						<span><i class='bx bxs-analyse' ></i></span><h3>Analytics</h3>
+					</a>
+					<a class="menu-item" id="theme">
+						<span><i class='bx bxs-palette' ></i></span><h3>Themes</h3>
+					</a>
+					<a class="menu-item">
+						<span><i class='bx bxs-cog'></i></span><h3>Settings</h3>
+					</a>
+				 </div>
+			</div>
+			<!-- ================ End of left ================ -->
+	
+			<!-- ================ middle ================ -->
+			<div class="middle">
+				<!-- ================ profile ================ -->
+				<div class="profile">
+					<div class="profile-photo">
+						<img src="../static/img/profile-1.jpg">
+					</div>
+					<div class="user-info">
+						<div>
+							<h1>Lana Rose</h1>
+							<h5 class="text-muted">@username</h5>
+							<h6> Bio Lorem ipsum dolor sit amet.</h6>
+						</div>
+						<div>
+							<button class="btn btn-primary">Edit Profile</button>
+						</div>					
+						<div class="account-stats">
+							<h4>1 <small>Post</small></h4>
+							<h4>152 <small>Followers</small></h4>
+							<h4>238 <small>Following</small></h4>
+						</div>
+					</div>
+				</div>
+				<!-- ================ end of profile ================ -->
+
+				<!-- ================ user Posts ================ -->
+				 <div class="feeds">
+					<!-- ================ post one================ -->
+					<div class="feed">
+						<div class="head">
+							<div class="user">
+								<div class="profile-photo">
+									<img src="../static/img/profile-1.jpg">
+								</div>
+								<div class="info">
+									<h3>Lana Rose</h3>
+									<small>Dubai, 15 Minutes ago</small>
+								</div>
+							</div>
+							<span class="edit">
+								<i class='bx bx-dots-horizontal-rounded'></i>
+							</span>
+						</div>
+						<div class="photo">
+							<img src="../static/img/feed-1.jpg">
+						</div>
+
+						<div class="action-buttons">
+							<div class="interaction-buttons">
+								<span><i class='bx bx-heart'></i></span>
+								<span><i class='bx bxs-comment-detail'></i></span>
+								<span><i class='bx bxs-share-alt'></i></span>
+							</div>
+							<div class="bookmark">
+								<span><i class='bx bx-bookmark' ></i></span>
+							</div>
+						</div>
+						<div class="liked-by">
+							<span><img src="../static/img/profile-10.jpg"></span>
+							<span><img src="../static/img/profile-11.jpg"></span>
+							<span><img src="../static/img/profile-12.jpg"></span>
+							<p>liked by <b>Ernest Achiever</b> and <b>323others</b></p>
+						</div>
+						<div class="caption">
+							<p>
+								Lorem ipsum dolor lore.
+								<span class="harsh-tag">#lifestule</span>
+							</p>
+						</div>
+						<div class="comment text-muted">
+							view all 277 comments
+						</div>
+					</div>
+					<!-- ================ end of post one ================ -->
+				</div>
+			</div>
+			<!-- ================ middle ================ -->
+		 </div>
+	 </main>
+
+	 
+	<!-- ================ themes ================ -->
+	<div class="customized-theme">
+		<div class="card">
+			<h2>Customize your view</h2>
+			<p class="text-muted">Manage your font size, color, and background.</p>
+
+			<!-- ================ Font Size ================ -->
+			<div class="font-size">
+				<h4>Font Size</h4>
+				<div>
+					<h6>Aa</h6>
+					<div class="choose-size">
+						<span class="font-size-1 "></span>
+						<span class="font-size-2"></span>
+						<span class="font-size-3 active"></span>
+						<span class="font-size-4"></span>
+						<span class="font-size-5"></span>
+					</div>
+					<h3>Aa</h3>
+				</div>
+			</div>
+
+			<!-- ================ Primary Colours ================ -->
+			 <div class="color">
+				<h4>Color</h4>
+				<div class="choose-color">
+					<span class="color-1 active"></span>
+					<span class="color-2"></span>
+					<span class="color-3"></span>
+					<span class="color-4"></span>
+					<span class="color-5"></span>
+				</div>
+			 </div>
+			<!-- ================ Background Colours ================ -->
+			 <div class="background">
+				<h4>Background</h4>
+				<div class="choose-bg">
+					<div class="bg-1">
+						<span></span>
+						<h5 for="bg-1">Light</h5>
+					</div>
+					<div class="bg-2 active">
+						<span></span>
+						<h5 for="bg-2">Midnight Blue</h5>
+					</div>
+					<div class="bg-3">
+						<span></span>
+						<h5 for="bg-3">Midnight Purple</h5>
+					</div>
+				</div>
+			 </div>
+		</div>
+	 </div>
+	 <!-- ================ end of themes ================ -->
+	 <script src="../static/js/home.js"></script>
+</body>
+</html>

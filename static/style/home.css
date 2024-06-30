@@ -40,7 +40,7 @@ body{
 }
 
 .container{
-	width: 80%;
+	width: 90%;
 	margin: 0 auto;
 }
 
@@ -121,6 +121,9 @@ nav .create {
 	gap: 2rem;
 }
 
+nav .create .profile-photo{
+	width: 4rem;
+}
 
 
 /*================ Main ================*/
@@ -150,7 +153,6 @@ main .container .left .profile{
 	align-items: center;
 	column-gap: 1rem;
 	width: 100%;
-
 
 }
 
