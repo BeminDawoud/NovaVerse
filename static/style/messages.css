@@ -86,7 +86,7 @@ main .container{
 }
 
 .middle .messages-wrapper .input-bar{
-	display: flex;
+	display: none;
 	position: absolute;
 	bottom: 2%;
 	left: 2%;
@@ -111,6 +111,15 @@ main .container{
 .middle .messages-wrapper .chat .no-messages i{
 	font-size: 10rem;
 }
+
+
+.hide{
+	display: none;
+}
+.show{
+	display: block;
+}
+
 
 
 /*===================== Media Query ==========================*/

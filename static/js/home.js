@@ -9,7 +9,9 @@ const root = document.querySelector(':root');
 const bg1 = document.querySelector('.bg-1');
 const bg2 = document.querySelector('.bg-2');
 const bg3 = document.querySelector('.bg-3');
-const contacts = document.querySelectorAll(".contact")
+const contacts = document.querySelectorAll(".contact");
+const noMessage = document.querySelector(".no-messages");
+const inputBar = document.querySelector(".input-bar");
 
 
 // *******************Side-Bar*************************
@@ -34,14 +36,23 @@ menuItems.forEach(item => {
 	})
 })
 
+
+// **************** messages ********************
 // Add active class in messages clicked
+contacts.forEach(item => {
+	item.addEventListener("click", () => {
+		noMessage.style.display = 'none';
+		inputBar.style.display = "block"
+	})
+})
+
+/* no-message icon visibility */
 contacts.forEach(item => {
 	item.addEventListener("click", () => {
 		removeActiveItem(contacts);
 		item.classList.add("active");
 	})
 })
-
 
 // **************** theme customization ********************
 // open and close theme card
@@ -162,3 +173,6 @@ bg3.addEventListener('click', () => {
 
 	
 })
+
+
+/* no-message icon visibility */
