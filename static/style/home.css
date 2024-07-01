@@ -603,3 +603,28 @@ main .container .right{
 		width: 92vw;
 	}
 }
+
+
+
+/*======================== Scroll bar =======================*/
+::-webkit-scrollbar {
+    width: 0.7rem;
+    height: 0.7rem;
+
+}
+
+::-webkit-scrollbar-track {
+    background: var(--colour-secondary);
+	border: 0.4rem solid var(--colour-primary);
+	border-radius: var(--border-radius);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--btn-color);
+    border-radius: 10px;
+    border: 3px solid var(--colour-secondary);
+	border-radius: var(--border-radius);
+}
+
+
+/*======================== end Scroll bar =======================*/

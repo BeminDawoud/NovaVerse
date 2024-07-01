@@ -14,7 +14,7 @@ const contacts = document.querySelectorAll(".contact")
 
 // *******************Side-Bar*************************
 // remove class active from all items
-const changeActiveItem = (items) => {
+const removeActiveItem = (items) => {
 	items.forEach(item => {
 		item.classList.remove("active");
 	})
@@ -23,7 +23,7 @@ const changeActiveItem = (items) => {
 // Add active class in menu-item clicked
 menuItems.forEach(item => {
 	item.addEventListener("click", () => {
-		changeActiveItem(menuItems);
+		removeActiveItem(menuItems);
 		item.classList.add("active");
 		if(item.id != "notifications"){
 			document.querySelector('.notifications-popup').style.display = 'none';
@@ -37,7 +37,7 @@ menuItems.forEach(item => {
 // Add active class in messages clicked
 contacts.forEach(item => {
 	item.addEventListener("click", () => {
-		changeActiveItem(contacts);
+		removeActiveItem(contacts);
 		item.classList.add("active");
 	})
 })

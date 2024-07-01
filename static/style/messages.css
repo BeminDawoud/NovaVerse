@@ -21,11 +21,18 @@ main .container{
 	margin-top: 1rem;
 }
 
+
+
+/*===================== contacts box ==========================*/
 .middle .messages-wrapper .contacts {
 	display: flex;
 	flex-direction: column;
 	border-radius: var(--border-radius);
 	background: var(--colour-secondary);
+	max-height: 70vh;
+	min-height: 50vh;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 .messages-wrapper .contacts .contact {
@@ -56,14 +63,14 @@ main .container{
 
 .messages-wrapper .contacts .contact:first-child.active{
 	border-top-left-radius: var(--border-radius);
-	overflow: hidden;
 }
 
 .messages-wrapper .contacts .contact:last-child.active{
 	border-bottom-left-radius: var(--border-radius);
-	overflow: hidden;
 }
 
+
+/*===================== chat box ==========================*/
 .middle .messages-wrapper .chat {
 	display: flex;
 	position: relative;
@@ -71,28 +78,41 @@ main .container{
 	padding: var(--card-padding);
 	border-radius: var(--border-radius);
 	background: var(--colour-secondary);
+	max-height: 70vh;
+	min-height: 50vh;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.middle .messages-wrapper .chat .no-messages{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+.middle .messages-wrapper .chat .no-messages i{
+	font-size: 10rem;
 }
 
 .middle .messages-wrapper .input-bar{
-	width: 100%;
 	display: flex;
 	position: absolute;
-	bottom: 0;
+	bottom: 2%;
 	margin-top: 1rem;
 	background: var(--colour-secondary);
-	padding: 0.4rem var(--card-padding);
-	border-radius: var(--border-radius);
 }
 
 .middle .messages-wrapper .input-bar input[type="text"]{
 	justify-content: start;
-	width: 100%;
-	padding-left: 1rem;
 	background: transparent;
 	color: white;
 }
 
 
+
+/*===================== Media Query ==========================*/
 @media screen and (max-width: 700px) {
 	.messages-wrapper .contacts .contact .handle{
 		display: none;
