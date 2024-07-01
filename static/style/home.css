@@ -33,6 +33,10 @@
   list-style: none;
 }
 
+a {
+    text-decoration: none;
+}
+
 body{
 	color: var(--colour-white);
 	background: var(--colour-primary);

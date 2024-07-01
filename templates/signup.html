@@ -6,8 +6,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="../static/style/login.css">
-	<link rel="icon" type="image/png" href="../static/img/Log/NovaVerse.svg" sizes="32x32">
+	<link rel="stylesheet" href="{% static 'style/login.css' %}">
+	<link rel="icon" type="image/png" href="{% static 'img/Log/NovaVerse.svg' %}" sizes="32x32">
 	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 	<title>Document</title>
 </head>
@@ -37,7 +37,7 @@
 				</div>
 				<button type="submit">Sign Up</button>
 				<div class="signUp-link">
-					<p>Already have an account? <a href="./login.html" class="signInBtn-link">Sign In</a></p>
+					<p>Already have an account? <a href="{% url 'login' %}" class="signInBtn-link">Sign In</a></p>
 				</div>
 			</form>
 		</div>

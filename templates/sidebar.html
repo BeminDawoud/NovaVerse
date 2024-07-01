@@ -1,6 +1,8 @@
+{% load static %}
+
 <!-- ================ side-bar ================ -->
 <div class="sidebar">
-	<a class="menu-item">
+	<a href="{% url 'home' %}" class="menu-item">
 		<span><i class='bx bx-home'></i></span>
 		<h3>Home</h3>
 	</a>
@@ -11,7 +13,7 @@
 		<div class="notifications-popup">
 			<div>
 				<div class="profile-photo">
-					<img src="../static/img/profile-1.jpg">
+					<img src="{% static 'img/profile-1.jpg' %}">
 				</div>
 				<div class="notifications-body">
 					<b>Loki Oden</b> Accepted your friend request
@@ -20,7 +22,7 @@
 			</div>
 			<div>
 				<div class="profile-photo">
-					<img src="../static/img/profile-2.jpg">
+					<img src="{% static 'img/profile-2.jpg' %}">
 				</div>
 				<div class="notifications-body">
 					<b>Thor Oden</b> Commented on your post
@@ -29,7 +31,7 @@
 			</div>
 			<div>
 				<div class="profile-photo">
-					<img src="../static/img/profile-3.jpg">
+					<img src="{% static 'img/profile-3.jpg' %}">
 				</div>
 				<div class="notifications-body">
 					<b>Hella Oden</b> liked your post
@@ -38,7 +40,7 @@
 			</div>
 			<div>
 				<div class="profile-photo">
-					<img src="../static/img/profile-4.jpg">
+					<img src="{% static 'img/profile-4.jpg' %}">
 				</div>
 				<div class="notifications-body">
 					<b>Oden</b> Accepted your friend request
@@ -47,7 +49,7 @@
 			</div>
 			<div>
 				<div class="profile-photo">
-					<img src="../static/img/profile-5.jpg">
+					<img src="{% static 'img/profile-5.jpg' %}">
 				</div>
 				<div class="notifications-body">
 					<b>Loki</b> Accepted your friend request
@@ -56,7 +58,7 @@
 			</div>
 			<div>
 				<div class="profile-photo">
-					<img src="../static/img/profile-6.jpg">
+					<img src="{% static 'img/profile-6.jpg' %}">
 				</div>
 				<div class="notifications-body">
 					<b>Loki</b> Accepted your friend request
@@ -65,7 +67,7 @@
 			</div>
 		</div>
 	</a>
-	<a class="menu-item" id="messages-notifications">
+	<a href="{% url 'messages' %}" class="menu-item" id="messages-notifications">
 		<span><i class='bx bxs-message-dots'><small class="notifications-count">6</small></i></span>
 		<h3>Messages</h3>
 	</a>

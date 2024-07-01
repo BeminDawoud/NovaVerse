@@ -6,9 +6,9 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="../static/style/home.css">
-	<link rel="stylesheet" href="../static/style/profile.css">
-	<link rel="icon" type="image/png" href="../static/img/Log/NovaVerse.svg" sizes="32x32">
+	<link rel="stylesheet" href="{% static 'style/home.css' %}">
+	<link rel="stylesheet" href="{% static 'style/profile.css' %}">
+	<link rel="icon" type="image/png" href="{% static 'img/Log/NovaVerse.svg' %}" sizes="32x32">
 	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 	<title>NovaVerse</title>
 </head>
@@ -31,7 +31,7 @@
 				<!-- ================ profile ================ -->
 				<div class="profile">
 					<div class="profile-photo">
-						<img src="../static/img/profile-1.jpg">
+						<img src="{% static 'img/profile-1.jpg' %}">
 					</div>
 					<div class="user-info">
 						<div>
@@ -58,7 +58,7 @@
 						<div class="head">
 							<div class="user">
 								<div class="profile-photo">
-									<img src="../static/img/profile-1.jpg">
+									<img src="{% static 'img/profile-1.jpg' %}">
 								</div>
 								<div class="info">
 									<h3>Lana Rose</h3>
@@ -70,7 +70,7 @@
 							</span>
 						</div>
 						<div class="photo">
-							<img src="../static/img/feed-1.jpg">
+							<img src="{% static 'img/feed-1.jpg' %}">
 						</div>
 
 						<div class="action-buttons">
@@ -84,9 +84,9 @@
 							</div>
 						</div>
 						<div class="liked-by">
-							<span><img src="../static/img/profile-10.jpg"></span>
-							<span><img src="../static/img/profile-11.jpg"></span>
-							<span><img src="../static/img/profile-12.jpg"></span>
+							<span><img src="{% static 'img/profile-10.jpg' %}"></span>
+							<span><img src="{% static 'img/profile-11.jpg' %}"></span>
+							<span><img src="{% static 'img/profile-12.jpg' %}"></span>
 							<p>liked by <b>Ernest Achiever</b> and <b>323others</b></p>
 						</div>
 						<div class="caption">
@@ -108,7 +108,7 @@
 
 
 	{% include 'themes.html' %}
-	<script src="../static/js/home.js"></script>
+	<script src="{% static 'js/home.js' %}"></script>
 </body>
 
 </html>
