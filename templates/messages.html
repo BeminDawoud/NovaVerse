@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,124 +14,14 @@
 </head>
 
 <body>
-	<!-- ================ NavBar ================ -->
-	<nav>
-		<div class="container">
-			<h2 class="logo">
-				NovaVerse
-			</h2>
-			<div class="search-bar">
-				<i class='bx bx-search'></i>
-				<input type="search" placeholder="Search NovaVerse">
-			</div>
-			<div class="create">
-				<label class="btn btn-primary" for="create-post">Create</label>
-				<div class="profile-photo">
-					<img src="../static/img/Log/NovaVerse.svg" alt="">
-				</div>
-			</div>
-		</div>
-	</nav>
-	<!-- ================ end of NavBar ================ -->
-
+	{% include 'nav.html' %}
 
 	<!-- ================ main ================ -->
 	<main>
 		<div class="container">
 			<!-- ================ left ================ -->
 			<div class="left">
-				<!-- ================ side-bar ================ -->
-				<div class="sidebar">
-					<a class="menu-item">
-						<span><i class='bx bx-home'></i></span>
-						<h3>Home</h3>
-					</a>
-					<a class="menu-item" id="notifications">
-						<span><i class='bx bxs-bell'><small class="notifications-count">9+</small></i></span>
-						<h3>Notifications</h3>
-						<!-- ================ notification Pop-Up ================ -->
-						<div class="notifications-popup">
-							<div>
-								<div class="profile-photo">
-									<img src="../static/img/profile-1.jpg">
-								</div>
-								<div class="notifications-body">
-									<b>Loki Oden</b> Accepted your friend request
-									<small class="text-muted">Days Ago</small>
-								</div>
-							</div>
-							<div>
-								<div class="profile-photo">
-									<img src="../static/img/profile-2.jpg">
-								</div>
-								<div class="notifications-body">
-									<b>Thor Oden</b> Commented on your post
-									<small class="text-muted">Days Ago</small>
-								</div>
-							</div>
-							<div>
-								<div class="profile-photo">
-									<img src="../static/img/profile-3.jpg">
-								</div>
-								<div class="notifications-body">
-									<b>Hella Oden</b> liked your post
-									<small class="text-muted">Days Ago</small>
-								</div>
-							</div>
-							<div>
-								<div class="profile-photo">
-									<img src="../static/img/profile-4.jpg">
-								</div>
-								<div class="notifications-body">
-									<b>Oden</b> Accepted your friend request
-									<small class="text-muted">Days Ago</small>
-								</div>
-							</div>
-							<div>
-								<div class="profile-photo">
-									<img src="../static/img/profile-5.jpg">
-								</div>
-								<div class="notifications-body">
-									<b>Loki</b> Accepted your friend request
-									<small class="text-muted">Days Ago</small>
-								</div>
-							</div>
-							<div>
-								<div class="profile-photo">
-									<img src="../static/img/profile-6.jpg">
-								</div>
-								<div class="notifications-body">
-									<b>Loki</b> Accepted your friend request
-									<small class="text-muted">Days Ago</small>
-								</div>
-							</div>
-						</div>
-					</a>
-					<a class="menu-item" id="messages-notifications">
-						<span><i class='bx bxs-message-dots'><small class="notifications-count">6</small></i></span>
-						<h3>Messages</h3>
-					</a>
-					<a class="menu-item">
-						<span><i class='bx bxs-bookmarks'></i></span>
-						<h3>Bookmarks</h3>
-					</a>
-					<a class="menu-item">
-						<span><i class='bx bxs-compass'></i></span>
-						<h3>Explore</h3>
-					</a>
-					<a class="menu-item">
-						<span><i class='bx bxs-analyse'></i></span>
-						<h3>Analytics</h3>
-					</a>
-					<a class="menu-item" id="theme">
-						<span><i class='bx bxs-palette'></i></span>
-						<h3>Themes</h3>
-					</a>
-					<a class="menu-item">
-						<span><i class='bx bxs-cog'></i></span>
-						<h3>Settings</h3>
-					</a>
-				</div>
+				{% include 'sidebar.html' %}
 			</div>
 			<!-- ================ End of left ================ -->
 
@@ -269,60 +161,7 @@
 	</main>
 
 
-	<!-- ================ themes ================ -->
-	<div class="customized-theme">
-		<div class="card">
-			<h2>Customize your view</h2>
-			<p class="text-muted">Manage your font size, color, and background.</p>
-
-			<!-- ================ Font Size ================ -->
-			<div class="font-size">
-				<h4>Font Size</h4>
-				<div>
-					<h6>Aa</h6>
-					<div class="choose-size">
-						<span class="font-size-1 "></span>
-						<span class="font-size-2"></span>
-						<span class="font-size-3 active"></span>
-						<span class="font-size-4"></span>
-						<span class="font-size-5"></span>
-					</div>
-					<h3>Aa</h3>
-				</div>
-			</div>
-
-			<!-- ================ Primary Colours ================ -->
-			<div class="color">
-				<h4>Color</h4>
-				<div class="choose-color">
-					<span class="color-1 active"></span>
-					<span class="color-2"></span>
-					<span class="color-3"></span>
-					<span class="color-4"></span>
-					<span class="color-5"></span>
-				</div>
-			</div>
-			<!-- ================ Background Colours ================ -->
-			<div class="background">
-				<h4>Background</h4>
-				<div class="choose-bg">
-					<div class="bg-1">
-						<span></span>
-						<h5 for="bg-1">Light</h5>
-					</div>
-					<div class="bg-2 active">
-						<span></span>
-						<h5 for="bg-2">Midnight Blue</h5>
-					</div>
-					<div class="bg-3">
-						<span></span>
-						<h5 for="bg-3">Midnight Purple</h5>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- ================ end of themes ================ -->
+	{% include 'themes.html' %}
 	<script src="../static/js/home.js"></script>
 </body>
 
