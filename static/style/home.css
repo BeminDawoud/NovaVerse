@@ -33,8 +33,9 @@
   list-style: none;
 }
 
-a {
-    text-decoration: none;
+a{
+	text-decoration: none;
+	color: inherit;
 }
 
 body{
