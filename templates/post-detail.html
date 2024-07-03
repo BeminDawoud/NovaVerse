@@ -10,6 +10,11 @@
 	<link rel="icon" type="image/png" href="{% static 'img/Log/NovaVerse.svg' %}" sizes="32x32">
 	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 	<title>NovaVerse</title>
+	<style>
+		main .container {
+			grid-template-columns: 15vw auto;
+		}
+	</style>
 </head>
 
 <body>
@@ -24,9 +29,9 @@
 						<img src="{% static 'img/profile-1.jpg' %}">
 					</div>
 					<div class="handle">
-						<h4>{{request.user.first_name}} {{request.user.last_name}}</h4>
+						<h4>{{user.first_name}} {{user.last_name}}</h4>
 						<p class="text-muted">
-							@{{request.user.username}}
+							@{{user.username}}
 						</p>
 					</div>
 				</a>
@@ -37,18 +42,8 @@
 
 			<!-- ================ middle ================ -->
 			<div class="middle">
-				<!-- ================ create-post ================ -->
-				<div class="create-post">
-					<div class="profile-photo">
-						<img src="{% static 'img/profile-1.jpg' %}">
-					</div>
-					<input type="text" placeholder="What's on your mind" id="create-post">
-					<a href="{% url 'new-post' %}"><input type="submit" class="btn btn-primary" value="create"></a>
-				</div>
 				<!-- ================ feeds ================ -->
 				<div class="feeds">
-
-					{% for post in post_items %}
 					<!-- ================ feed one================ -->
 					<div class="feed">
 						<div class="head">
@@ -66,7 +61,7 @@
 							</span>
 						</div>
 						<div class="photo">
-							<a href="{% url 'post-detail' post.id %}"><img src="{{ post.picture }}"></a>
+							<img src="{{ post.picture.url }}">
 						</div>
 
 						<div class="action-buttons">
@@ -100,75 +95,11 @@
 						</div>
 					</div>
 					<!-- ================ end of feed one ================ -->
-					{% endfor %}
 				</div>
 			</div>
 			<!-- ================ middle ================ -->
-
-
-			<!-- ================ right ================ -->
-			<div class="right">
-				<!-- ================ friend requests ================ -->
-				<div class="friend-requests">
-					<h4>Requests</h4>
-					<div class="request">
-						<div class="info">
-							<div class="profile-photo">
-								<img src="{% static 'img/profile-14.jpg' %}" alt="">
-							</div>
-							<div>
-								<h5>Thor Oden</h5>
-								<p class="text-muted">
-									5 Mutual friends
-								</p>
-							</div>
-						</div>
-						<div class="action">
-							<button class="btn btn-primary">Accept</button>
-							<button class="btn">Decline</button>
-						</div>
-					</div>
-					<div class="request">
-						<div class="info">
-							<div class="profile-photo">
-								<img src="{% static 'img/profile-15.jpg' %}" alt="">
-							</div>
-							<div>
-								<h5>Oden</h5>
-								<p class="text-muted">
-									7 Mutual friends
-								</p>
-							</div>
-						</div>
-						<div class="action">
-							<button class="btn btn-primary">Accept</button>
-							<button class="btn">Decline</button>
-						</div>
-					</div>
-					<div class="request">
-						<div class="info">
-							<div class="profile-photo">
-								<img src="{% static 'img/profile-16.jpg' %}" alt="">
-							</div>
-							<div>
-								<h5>Loki Oden</h5>
-								<p class="text-muted">
-									8 Mutual friends
-								</p>
-							</div>
-						</div>
-						<div class="action">
-							<button class="btn btn-primary">Accept</button>
-							<button class="btn">Decline</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- ================ right ================ -->
-
 		</div>
 	</main>
-	{% include 'themes.html' %}
 	<script src="{% static 'js/home.js' %}"></script>
 </body>
 
