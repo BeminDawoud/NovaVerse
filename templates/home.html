@@ -38,12 +38,13 @@
 			<!-- ================ middle ================ -->
 			<div class="middle">
 				<!-- ================ create-post ================ -->
-				<form class="create-post">
+				<form class="create-post" method="post">
+					{% csrf_token %}
 					<div class="profile-photo">
 						<img src="{% static 'img/profile-1.jpg' %}">
 					</div>
 					<input type="text" placeholder="What's on your mind" id="create-post">
-					<input type="submit" class="btn btn-primary" value="post">
+					<input type="submit" class="btn btn-primary" value="create post">
 				</form>
 				<!-- ================ feeds ================ -->
 				<div class="feeds">

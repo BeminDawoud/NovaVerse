@@ -3,23 +3,18 @@ from post.models import Post
 
 
 class newPostForm(forms.ModelForm):
-    Picture = forms.ImageField(required=True)
-    Caption = forms.CharField(
+    picture = forms.ImageField(required=True)
+    caption = forms.CharField(
         widget=forms.TextInput(
             attrs={"class": "django-input", "placeholder": "Caption"}
         ),
         required=True,
     )
-    tag = forms.CharField(
-        widget=forms.TextInput(
-            attrs={
-                "class": "django-input",
-                "placeholder": "Tags - Seperate tags with Hash",
-            }
-        ),
+    tags = forms.CharField(
+        widget=forms.TextInput(attrs={"class": "django-input", "placeholder": "Tag"}),
         required=True,
     )
 
     class Meta:
         model = Post
-        fields = ["Picture", "Caption", "tag"]
+        fields = ["picture", "caption", "tags"]

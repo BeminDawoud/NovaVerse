@@ -20,7 +20,7 @@ def home(request):
 
 
 def newPost(request):
-    user = request.user
+    user = request.user.id
     tags_objs = []
 
     if request.method == "POST":
@@ -28,22 +28,22 @@ def newPost(request):
         if form.is_valid():
             picture = form.cleaned_data.get("picture")
             caption = form.cleaned_data.get("caption")
-            tag_form = form.cleaned_data.get("tag")
+            tag_form = form.cleaned_data.get("tags")
             tags_list = list(tag_form.split("#"))
             for tag in tags_list:
                 t, created = Tag.objects.get_or_create(title=tag)
                 tags_objs.append(t)
             p, created = Post.objects.get_or_create(
-                Picture=picture, caption=caption, user_id=user
+                picture=picture, caption=caption, user_id=user
             )
-            p.tags_list.set(tags_objs)
+            p.tags.set(tags_objs)
             p.save()
             return redirect("home")
     else:
         form = newPostForm()
-        context = {
-            "form": form,
-        }
+    context = {
+        "form": form,
+    }
     return render(request, "post.html", context)
 
 
