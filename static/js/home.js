@@ -174,5 +174,3 @@ bg3.addEventListener('click', () => {
 	
 })
 
-
-/* no-message icon visibility */
