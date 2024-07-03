@@ -353,6 +353,11 @@ main .container .left .profile{
 	margin-left: 0.5rem;
 }
 
+.middle .feed .caption a{
+	text-decoration: underline;
+	color: var(--btn-color);
+}
+
 /*================ right ================*/
 main .container .right{
 	height: max-content;

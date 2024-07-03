@@ -47,6 +47,8 @@
 				</form>
 				<!-- ================ feeds ================ -->
 				<div class="feeds">
+
+					{% for post in post_items %}
 					<!-- ================ feed one================ -->
 					<div class="feed">
 						<div class="head">
@@ -55,8 +57,8 @@
 									<img src="{% static 'img/profile-1.jpg' %}">
 								</div>
 								<div class="info">
-									<h3>Lana Rose</h3>
-									<small>Dubai, 15 Minutes ago</small>
+									<h3>{{ post.user.username }}</h3>
+									<small>{{ post.posted }}</small>
 								</div>
 							</div>
 							<span class="edit">
@@ -64,7 +66,7 @@
 							</span>
 						</div>
 						<div class="photo">
-							<img src="{% static 'img/feed-1.jpg' %}">
+							<img src="{{ post.picture }}">
 						</div>
 
 						<div class="action-buttons">
@@ -81,12 +83,15 @@
 							<span><img src="{% static 'img/profile-10.jpg' %}"></span>
 							<span><img src="{% static 'img/profile-11.jpg' %}"></span>
 							<span><img src="{% static 'img/profile-12.jpg' %}"></span>
-							<p>liked by <b>Ernest Achiever</b> and <b>323others</b></p>
+							<p>liked by <b>Ernest Achiever</b> and <b>{{ post.likes|add:"-1"}} others</b></p>
 						</div>
 						<div class="caption">
 							<p>
-								Lorem ipsum dolor lore.
-								<span class="harsh-tag">#lifestule</span>
+								{{post.caption}}
+
+								{% for tag in post.tags.all %}
+								<a href="{{tag.get_absolute_url}}"><span class="harsh-tag"> #{{tag.title}}</span></a>
+								{% endfor %}
 							</p>
 						</div>
 						<div class="comment text-muted">
@@ -94,194 +99,7 @@
 						</div>
 					</div>
 					<!-- ================ end of feed one ================ -->
-					<!-- ================ feed two================ -->
-					<div class="feed">
-						<div class="head">
-							<div class="user">
-								<div class="profile-photo">
-									<img src="{% static 'img/profile-7.jpg' %}">
-								</div>
-								<div class="info">
-									<h3>Eric Hanson</h3>
-									<small>Dubai, 15 Minutes ago</small>
-								</div>
-							</div>
-							<span class="edit">
-								<i class='bx bx-dots-horizontal-rounded'></i>
-							</span>
-						</div>
-						<div class="photo">
-							<img src="{% static 'img/feed-5.jpg' %}">
-						</div>
-
-						<div class="action-buttons">
-							<div class="interaction-buttons">
-								<span><i class='bx bx-heart'></i></span>
-								<span><i class='bx bxs-comment-detail'></i></span>
-								<span><i class='bx bxs-share-alt'></i></span>
-							</div>
-							<div class="bookmark">
-								<span><i class='bx bx-bookmark'></i></span>
-							</div>
-						</div>
-						<div class="liked-by">
-							<span><img src="{% static 'img/profile-10.jpg' %}"></span>
-							<span><img src="{% static 'img/profile-11.jpg' %}"></span>
-							<span><img src="{% static 'img/profile-12.jpg' %}"></span>
-							<p>liked by <b>Ernest Achiever</b> and <b>323others</b></p>
-						</div>
-						<div class="caption">
-							<p>
-								Lorem ipsum dolor lore.
-								<span class="harsh-tag">#lifestule</span>
-							</p>
-						</div>
-						<div class="comment text-muted">
-							view all 277 comments
-						</div>
-					</div>
-					<!-- ================ end of feed two ================ -->
-					<!-- ================ feed three ================ -->
-					<div class="feed">
-						<div class="head">
-							<div class="user">
-								<div class="profile-photo">
-									<img src="{% static 'img/profile-6.jpg' %}">
-								</div>
-								<div class="info">
-									<h3>John Doe</h3>
-									<small>Dubai, 15 Minutes ago</small>
-								</div>
-							</div>
-							<span class="edit">
-								<i class='bx bx-dots-horizontal-rounded'></i>
-							</span>
-						</div>
-						<div class="photo">
-							<img src="{% static 'img/feed-6.jpg' %}">
-						</div>
-
-						<div class="action-buttons">
-							<div class="interaction-buttons">
-								<span><i class='bx bx-heart'></i></span>
-								<span><i class='bx bxs-comment-detail'></i></span>
-								<span><i class='bx bxs-share-alt'></i></span>
-							</div>
-							<div class="bookmark">
-								<span><i class='bx bx-bookmark'></i></span>
-							</div>
-						</div>
-						<div class="liked-by">
-							<span><img src="{% static 'img/profile-10.jpg' %}"></span>
-							<span><img src="{% static 'img/profile-11.jpg' %}"></span>
-							<span><img src="{% static 'img/profile-12.jpg' %}"></span>
-							<p>liked by <b>Ernest Achiever</b> and <b>323others</b></p>
-						</div>
-						<div class="caption">
-							<p>
-								Lorem ipsum dolor lore.
-								<span class="harsh-tag">#lifestule</span>
-							</p>
-						</div>
-						<div class="comment text-muted">
-							view all 277 comments
-						</div>
-					</div>
-					<!-- ================ end of feed three ================ -->
-					<!-- ================ feed four ================ -->
-					<div class="feed">
-						<div class="head">
-							<div class="user">
-								<div class="profile-photo">
-									<img src="{% static 'img/profile-5.jpg' %}">
-								</div>
-								<div class="info">
-									<h3>Hella Oden</h3>
-									<small>Dubai, 15 Minutes ago</small>
-								</div>
-							</div>
-							<span class="edit">
-								<i class='bx bx-dots-horizontal-rounded'></i>
-							</span>
-						</div>
-						<div class="photo">
-							<img src="{% static 'img/feed-3.jpg' %}">
-						</div>
-
-						<div class="action-buttons">
-							<div class="interaction-buttons">
-								<span><i class='bx bx-heart'></i></span>
-								<span><i class='bx bxs-comment-detail'></i></span>
-								<span><i class='bx bxs-share-alt'></i></span>
-							</div>
-							<div class="bookmark">
-								<span><i class='bx bx-bookmark'></i></span>
-							</div>
-						</div>
-						<div class="liked-by">
-							<span><img src="{% static 'img/profile-10.jpg' %}"></span>
-							<span><img src="{% static 'img/profile-11.jpg' %}"></span>
-							<span><img src="{% static 'img/profile-12.jpg' %}"></span>
-							<p>liked by <b>Ernest Achiever</b> and <b>323others</b></p>
-						</div>
-						<div class="caption">
-							<p>
-								Lorem ipsum dolor lore.
-								<span class="harsh-tag">#lifestule</span>
-							</p>
-						</div>
-						<div class="comment text-muted">
-							view all 277 comments
-						</div>
-					</div>
-					<!-- ================ end of feed four ================ -->
-					<!-- ================ feed Five ================ -->
-					<div class="feed">
-						<div class="head">
-							<div class="user">
-								<div class="profile-photo">
-									<img src="{% static 'img/profile-4.jpg' %}">
-								</div>
-								<div class="info">
-									<h3>Scarlet Whitch</h3>
-									<small>Dubai, 15 Minutes ago</small>
-								</div>
-							</div>
-							<span class="edit">
-								<i class='bx bx-dots-horizontal-rounded'></i>
-							</span>
-						</div>
-						<div class="photo">
-							<img src="{% static 'img/feed-2.jpg' %}">
-						</div>
-
-						<div class="action-buttons">
-							<div class="interaction-buttons">
-								<span><i class='bx bx-heart'></i></span>
-								<span><i class='bx bxs-comment-detail'></i></span>
-								<span><i class='bx bxs-share-alt'></i></span>
-							</div>
-							<div class="bookmark">
-								<span><i class='bx bx-bookmark'></i></span>
-							</div>
-						</div>
-						<div class="liked-by">
-							<span><img src="{% static 'img/profile-10.jpg' %}"></span>
-							<span><img src="{% static 'img/profile-11.jpg' %}"></span>
-							<span><img src="{% static 'img/profile-12.jpg' %}"></span>
-							<p>liked by <b>Ernest Achiever</b> and <b>323others</b></p>
-						</div>
-						<div class="caption">
-							<p>
-								Lorem ipsum dolor lore.
-								<span class="harsh-tag">#lifestule</span>
-							</p>
-						</div>
-						<div class="comment text-muted">
-							view all 277 comments
-						</div>
-					</div>
-					<!-- ================ end of feed five ================ -->
+					{% endfor %}
 				</div>
 			</div>
 			<!-- ================ middle ================ -->
