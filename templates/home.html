@@ -24,9 +24,9 @@
 						<img src="{% static 'img/profile-1.jpg' %}">
 					</div>
 					<div class="handle">
-						<h4>Diana Ayi</h4>
+						<h4>{{request.user.first_name}} {{request.user.last_name}}</h4>
 						<p class="text-muted">
-							@dayis
+							@{{request.user.username}}
 						</p>
 					</div>
 				</a>
@@ -38,14 +38,13 @@
 			<!-- ================ middle ================ -->
 			<div class="middle">
 				<!-- ================ create-post ================ -->
-				<form class="create-post" method="post">
-					{% csrf_token %}
+				<div class="create-post">
 					<div class="profile-photo">
 						<img src="{% static 'img/profile-1.jpg' %}">
 					</div>
 					<input type="text" placeholder="What's on your mind" id="create-post">
-					<input type="submit" class="btn btn-primary" value="create post">
-				</form>
+					<a href="{% url 'new-post' %}"><input type="submit" class="btn btn-primary" value="create"></a>
+				</div>
 				<!-- ================ feeds ================ -->
 				<div class="feeds">
 
@@ -91,7 +90,8 @@
 								{{post.caption}}
 
 								{% for tag in post.tags.all %}
-								<a href="{{tag.get_absolute_url}}"><span class="harsh-tag"> #{{tag.title}}</span></a>
+								<a href="{{tag.get_absolute_url}}"><span class="harsh-tag">
+										#{{tag.title}}</span></a>
 								{% endfor %}
 							</p>
 						</div>

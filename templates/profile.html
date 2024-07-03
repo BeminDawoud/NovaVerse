@@ -35,8 +35,8 @@
 					</div>
 					<div class="user-info">
 						<div>
-							<h1>Lana Rose</h1>
-							<h5 class="text-muted">@username</h5>
+							<h1>{{request.user.first_name}} {{request.user.last_name}}</h1>
+							<h5 class="text-muted">@{{request.user.username}}</h5>
 							<h6> Bio Lorem ipsum dolor sit amet.</h6>
 						</div>
 						<div>
