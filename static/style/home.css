@@ -328,8 +328,12 @@ main .container .left .profile{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	font-size: 1.4rem;
+	font-size: 1.6rem;
 	margin: 0.6rem;
+}
+
+.middle .feed .action-buttons i.liked{
+	color: var(--btn-color);
 }
 
 .middle .feed .liked-by{
