@@ -29,116 +29,21 @@
 			<div class="middle">
 				<div class="messages-wrapper">
 					<div class="contacts">
+
+						{% for message in messages %}
 						<div class="contact">
 							<div class="profile-photo">
-								<img src="{% static 'img/profile-2.jpg' %}">
+								<img src="{{message.user.profile.picture}}">
 							</div>
 							<div class="handle">
-								<h4>Contact 1</h4>
+								<h4>{{message.user.first_name}} {{message.user.last_name}}</h4>
 								<p class="text-muted">
-									Active 3 hours ago
+									{{message.last}}
 								</p>
 							</div>
 						</div>
-						<div class="contact">
-							<div class="profile-photo">
-								<img src="{% static 'img/profile-3.jpg' %}">
-							</div>
-							<div class="handle">
-								<h4>Contact 2</h4>
-								<p class="text-muted">
-									Active 3 hours ago
-								</p>
-							</div>
-						</div>
-						<div class="contact">
-							<div class="profile-photo">
-								<img src="{% static 'img/profile-3.jpg' %}">
-							</div>
-							<div class="handle">
-								<h4>Contact 2</h4>
-								<p class="text-muted">
-									Active 3 hours ago
-								</p>
-							</div>
-						</div>
-						<div class="contact">
-							<div class="profile-photo">
-								<img src="{% static 'img/profile-3.jpg' %}">
-							</div>
-							<div class="handle">
-								<h4>Contact 2</h4>
-								<p class="text-muted">
-									Active 3 hours ago
-								</p>
-							</div>
-						</div>
-						<div class="contact">
-							<div class="profile-photo">
-								<img src="{% static 'img/profile-3.jpg' %}">
-							</div>
-							<div class="handle">
-								<h4>Contact 2</h4>
-								<p class="text-muted">
-									Active 3 hours ago
-								</p>
-							</div>
-						</div>
-						<div class="contact">
-							<div class="profile-photo">
-								<img src="{% static 'img/profile-3.jpg' %}">
-							</div>
-							<div class="handle">
-								<h4>Contact 2</h4>
-								<p class="text-muted">
-									Active 3 hours ago
-								</p>
-							</div>
-						</div>
-						<div class="contact">
-							<div class="profile-photo">
-								<img src="{% static 'img/profile-4.jpg' %}">
-							</div>
-							<div class="handle">
-								<h4>Contact 3</h4>
-								<p class="text-muted">
-									Active 3 hours ago
-								</p>
-							</div>
-						</div>
-						<div class="contact">
-							<div class="profile-photo">
-								<img src="{% static 'img/profile-5.jpg' %}">
-							</div>
-							<div class="handle">
-								<h4>Contact 4</h4>
-								<p class="text-muted">
-									Active 3 hours ago
-								</p>
-							</div>
-						</div>
-						<div class="contact">
-							<div class="profile-photo">
-								<img src="{% static 'img/profile-6.jpg' %}">
-							</div>
-							<div class="handle">
-								<h4>Contact 5</h4>
-								<p class="text-muted">
-									Active 3 hours ago
-								</p>
-							</div>
-						</div>
-						<div class="contact">
-							<div class="profile-photo">
-								<img src="{% static 'img/profile-7.jpg' %}">
-							</div>
-							<div class="handle">
-								<h4>Contact 6</h4>
-								<p class="text-muted">
-									Active 3 hours ago
-								</p>
-							</div>
-						</div>
+						{% endfor %}
+
 						<!-- Add more contacts as needed -->
 					</div>
 					<div class="chat">
@@ -147,6 +52,26 @@
 							<h4 class="text-muted">Send a message to start chat</h4>
 						</div>
 						<div class="messages">
+
+							{% for direct in directs %}
+							<div class="message 
+							{% if direct.sender == request.user %}
+								sent
+								{% else %}
+								received
+							{% endif %}
+								">
+								<div class="photo">
+									<img src="{{direct.user.profile.picture}}">
+								</div>
+								<div class="body">
+									<h4>{{direct.body}}</h4>
+									<h6 class="text-muted">{{direct.date|date:"d M, Y"}}</h6>
+								</div>
+							</div>
+							{% endfor %}
+
+
 							<!-- Messages will be displayed here -->
 							<div class="input-bar">
 								<input type="text" id="message-input" placeholder="Type a message">

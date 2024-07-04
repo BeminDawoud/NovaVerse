@@ -8,7 +8,6 @@ urlpatterns = [
     path("<uuid:post_id>/like", views.like, name="like"),
     path("favourite/<uuid:post_id>/", views.favourite, name="favourite"),
     path("saved/", views.bookmark, name="saved"),
-    path("messages", views.messages, name="messages"),
     path("login", views.login, name="login"),
     path("signup", views.signup, name="signup"),
 ]

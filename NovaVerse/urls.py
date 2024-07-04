@@ -20,17 +20,13 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-from userauth.models import Profile
-from userauth.views import userProfile, follow, editProfile
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("post.urls")),
     path("", include("userauth.urls")),
     path("", include("comment.urls")),
-    path("<username>/", userProfile, name="profile"),
-    path("<username>/follow/<option>", follow, name="follow"),
-    path("edit", editProfile, name="edit-profile"),
+    path("", include("directmessages.urls")),
 ]
 
 # used for media in models

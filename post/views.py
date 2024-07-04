@@ -165,10 +165,6 @@ def bookmark(request):
     return render(request, "bookmarks.html", context)
 
 
-def messages(request):
-    return render(request, "messages.html")
-
-
 def login(request):
     return render(request, "login.html")
 

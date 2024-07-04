@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "post",
     "userauth",
     "comment",
+    "directmessages",
 ]
 
 MIDDLEWARE = [
