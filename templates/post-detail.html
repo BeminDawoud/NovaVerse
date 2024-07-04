@@ -27,18 +27,16 @@
 			<div class="left">
 				<a href="{% url 'profile' user.username %}" class="profile">
 					<div class="profile-photo">
-						<a href="{% url 'profile' profile.user.username %}">
-							{% if user_profile.picture %}
-							<img src="{{ user_profile.picture.url }}" alt="">
-							{% else %}
-							<img src="{% static 'img/default.jpg' %}" alt="Default Profile Picture">
-							{% endif %}
-						</a>
+						{% if user.profile.picture.url %}
+						<img src="{{ user.profile.picture.url }}" alt="">
+						{% else %}
+						<img src="{% static 'img/default.jpg' %}" alt="Default Profile Picture">
+						{% endif %}
 					</div>
 					<div class="handle">
-						<h4>{{user.first_name}} {{user.last_name}}</h4>
+						<h4>{{request.user.first_name}} {{request.user.last_name}}</h4>
 						<p class="text-muted">
-							@{{user.username}}
+							@{{request.user.username}}
 						</p>
 					</div>
 				</a>

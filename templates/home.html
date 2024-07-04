@@ -21,8 +21,8 @@
 			<div class="left">
 				<a href="{% url 'profile' user.username %}" class="profile">
 					<div class="profile-photo">
-						{% if profile.picture %}
-						<img src="{{ profile.picture.url }}" alt="">
+						{% if user.profile.picture.url %}
+						<img src="{{ user.profile.picture.url }}" alt="">
 						{% else %}
 						<img src="{% static 'img/default.jpg' %}" alt="Default Profile Picture">
 						{% endif %}
