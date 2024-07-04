@@ -124,58 +124,31 @@
 			<div class="right">
 				<!-- ================ friend requests ================ -->
 				<div class="friend-requests">
-					<h4>Requests</h4>
+					<h4>People you might know</h4>
+
+					{% for profile in unfollowed_users_profiles %}
 					<div class="request">
 						<div class="info">
 							<div class="profile-photo">
-								<img src="{% static 'img/profile-14.jpg' %}" alt="">
+								<img src="{{ profile.picture.url }}" alt="">
 							</div>
 							<div>
-								<h5>Thor Oden</h5>
+								<h5>{{profile.first_name}} {{profile.first_name}}</h5>
 								<p class="text-muted">
-									5 Mutual friends
+									@{{profile.user.username}}
 								</p>
 							</div>
 						</div>
 						<div class="action">
-							<button class="btn btn-primary">Accept</button>
-							<button class="btn">Decline</button>
+							{% if not follow_status %}
+							<a href="{% url 'follow' profile.user.username 1 %}" class="btn btn-primary">Follow</a>
+							{% else %}
+							<a href="{% url 'follow' profile.user.username 0 %}" class="btn btn-primary">Unfollow</a>
+							{% endif %}
 						</div>
 					</div>
-					<div class="request">
-						<div class="info">
-							<div class="profile-photo">
-								<img src="{% static 'img/profile-15.jpg' %}" alt="">
-							</div>
-							<div>
-								<h5>Oden</h5>
-								<p class="text-muted">
-									7 Mutual friends
-								</p>
-							</div>
-						</div>
-						<div class="action">
-							<button class="btn btn-primary">Accept</button>
-							<button class="btn">Decline</button>
-						</div>
-					</div>
-					<div class="request">
-						<div class="info">
-							<div class="profile-photo">
-								<img src="{% static 'img/profile-16.jpg' %}" alt="">
-							</div>
-							<div>
-								<h5>Loki Oden</h5>
-								<p class="text-muted">
-									8 Mutual friends
-								</p>
-							</div>
-						</div>
-						<div class="action">
-							<button class="btn btn-primary">Accept</button>
-							<button class="btn">Decline</button>
-						</div>
-					</div>
+					{% endfor %}
+
 				</div>
 			</div>
 			<!-- ================ right ================ -->

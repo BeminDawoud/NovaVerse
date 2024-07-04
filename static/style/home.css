@@ -384,7 +384,7 @@ main .container .right{
 	padding: var(--card-padding);
 	border-radius: var(--card-border-radius);
 	margin-bottom: 0.7rem;
-	width: max-content;
+	width: 15rem;
 }
 
 .right .request .info{
@@ -395,6 +395,8 @@ main .container .right{
 
 .right .request .action{
 	display: flex;
+	justify-content: center;
+	align-items: center;
 	gap: 1rem;
 }
 

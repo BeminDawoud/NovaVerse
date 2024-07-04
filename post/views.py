@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.models import User
 from post.models import Tag, Stream, Follow, Post, Likes
 from post.forms import newPostForm
 from userauth.models import Profile
@@ -20,7 +21,6 @@ def home(request):
     group_ids = [post.post_id for post in posts]
     post_items = Post.objects.filter(id__in=group_ids).all().order_by("-posted")
     profile = Profile.objects.get(user=user)
-
     posts_with_profile = []
     for post in post_items:
         post_user_profile = Profile.objects.get(user=post.user)
@@ -30,9 +30,18 @@ def home(request):
         }
         posts_with_profile.append(post_data)
 
+    # unfollowed users
+    all_users = User.objects.exclude(id=user.id)
+    followed_users = Follow.objects.filter(follower=user).values_list(
+        "following", flat=True
+    )
+    unfollowed_users = all_users.exclude(id__in=followed_users)
+    unfollowed_users_profiles = Profile.objects.filter(user__in=unfollowed_users)
+
     context = {
         "posts_with_profile": posts_with_profile,
         "profile": profile,
+        "unfollowed_users_profiles": unfollowed_users_profiles,
     }
     return render(request, "home.html", context)
 
