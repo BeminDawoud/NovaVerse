@@ -34,7 +34,11 @@
 						<a href="{% url 'direct' message.user.username%}">
 							<div class="contact">
 								<div class="profile-photo">
-									<img src="{{message.user.profile.picture.url}}">
+									{% if message.user.profile.picture %}
+									<img src="{{ message.user.profile.picture.url }}" alt="">
+									{% else %}
+									<img src="{% static 'img/default.jpg' %}" alt="Default Profile Picture">
+									{% endif %}
 								</div>
 								<div class="handle">
 									<h4>{{message.user.first_name}} {{message.user.last_name}}</h4>

@@ -6,7 +6,10 @@ from post.models import Post, Follow, Stream
 from userauth.models import Profile
 from django.core.paginator import Paginator
 from django.db import transaction
-from userauth.forms import EditProfileForm
+from userauth.forms import EditProfileForm, UserRegisterForm
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
+from django.contrib.auth import logout
 
 
 # Create your views here.
@@ -73,3 +76,56 @@ def editProfile(request):
         "form": form,
     }
     return render(request, "edit-profile.html", context)
+
+
+def register(request):
+    if request.method == "POST":
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            new_user = form.save()
+            Profile.objects.create(user=new_user)
+            username = form.cleaned_data.get("username")
+            messages.success(
+                request,
+                f"Account created successfully for {username}. You are now logged in.",
+            )
+
+            # Automatically Log In The User
+            new_user = authenticate(
+                username=form.cleaned_data["username"],
+                password=form.cleaned_data["password1"],
+            )
+            if new_user is not None:
+                login(request, new_user)
+                return redirect(
+                    "home"
+                )  # Redirect after successful registration and login
+            else:
+                messages.error(
+                    request, "Failed to log in. Please check your credentials."
+                )
+        else:
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f"Error in {field}: {error}")
+            return redirect(
+                "sign-up"
+            )  # Redirect back to sign-up page if form is invalid
+
+    elif request.user.is_authenticated:
+        return redirect("home")  # Redirect logged-in users away from sign-up page
+    else:
+        form = UserRegisterForm()
+
+    context = {
+        "form": form,
+    }
+    return render(request, "signup.html", context)
+
+
+def custom_logout(request):
+    logout(request)
+    messages.success(
+        request, "You have been logged out successfully."
+    )  # Optional message
+    return redirect("sign-in")

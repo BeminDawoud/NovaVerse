@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from post.models import Post
+from django.db.models.signals import post_save
 
 
 # create a user file to save all the media
@@ -25,5 +26,21 @@ class Profile(models.Model):
     )
     favourite = models.ManyToManyField(Post)
 
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return self.user.first_name
+
+
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+
+
+def save_user_profile(sender, instance, **kwargs):
+    instance.profile.save()
+
+
+post_save.connect(create_user_profile, sender=User)
+post_save.connect(save_user_profile, sender=User)

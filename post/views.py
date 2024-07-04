@@ -22,7 +22,7 @@ def home(request):
     posts = Stream.objects.filter(user=user)
     group_ids = [post.post_id for post in posts]
     post_items = Post.objects.filter(id__in=group_ids).all().order_by("-posted")
-    profile = Profile.objects.get(user=user)
+    profile = Profile.objects.get_or_create(user=user)
     posts_with_profile = []
     for post in post_items:
         post_user_profile = Profile.objects.get(user=post.user)
@@ -163,11 +163,3 @@ def bookmark(request):
         "profile": profile,
     }
     return render(request, "bookmarks.html", context)
-
-
-def login(request):
-    return render(request, "login.html")
-
-
-def signup(request):
-    return render(request, "signup.html")

@@ -7,7 +7,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="{% static 'style/login.css' %}">
+	{% if not messages %}
 	<link rel="icon" type="image/png" href="{% static 'img/Log/NovaVerse.svg' %}" sizes="32x32">
+	{% endif %}
 	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 	<title>Document</title>
 </head>
@@ -18,30 +20,42 @@
 			<div class="logo">
 				<img src="../static/img/Log/NovaVerse.svg" alt="" width="100" height="100">
 			</div>
-			<form action="">
+			<form method="post">
+				{% csrf_token %}
 				<h2>Sign Up</h2>
 				<div class="input-group">
-					<input type="text" required>
+					{{form.username}}
 					<label>Username</label>
 				</div>
 				<div class="input-group">
-					<input type="email" required>
+					{{form.email}}
 					<label>Email</label>
 				</div>
 				<div class="input-group">
-					<input type="password" required>
+					{{form.password1}}
 					<label>Password</label>
 				</div>
-				<div class="remember">
-					<label><input type="checkbox">I agree to the terms and conditions</label>
+				<div class="input-group">
+					{{form.password2}}
+					<label>Confirm Password</label>
 				</div>
 				<button type="submit">Sign Up</button>
 				<div class="signUp-link">
-					<p>Already have an account? <a href="{% url 'login' %}" class="signInBtn-link">Sign In</a></p>
+					<p>Already have an account? <a href="{% url 'sign-in' %}" class="signInBtn-link">Sign In</a></p>
 				</div>
+				{% if messages %}
+				<div class="warning">
+					<ul class="messages">
+						{% for message in messages %}
+						<li>{{ message }}</li>
+						{% endfor %}
+					</ul>
+				</div>
+				{% endif %}
 			</form>
 		</div>
 	</div>
+
 </body>
 
 </html>
