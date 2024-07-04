@@ -29,7 +29,7 @@ body{
 
 .wrapper{
   position: relative;
-  height: 600px;
+  height: 650px;
   width: 400px;
   background: linear-gradient(#000, var(--gradient--colour));
   box-shadow: 0 0 50px var(--main-color);
@@ -41,16 +41,17 @@ body{
 .logo{
   position: relative;
 }
+
 .logo img{
   position: absolute;
-  top: -190px;
+  top: -210px;
   left: 110px;
   transform: translateY(-50%);
 }
 
 .form-wrapper.sign-up .logo img{
   position: absolute;
-  top: -225px;
+  top: -270px;
   left: 110px;
   transform: translateY(-50%);
 }

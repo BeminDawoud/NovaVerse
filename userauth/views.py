@@ -10,6 +10,7 @@ from userauth.forms import EditProfileForm, UserRegisterForm
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.contrib.auth import logout
+from django.db import IntegrityError
 
 
 # Create your views here.
@@ -83,7 +84,12 @@ def register(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             new_user = form.save()
-            Profile.objects.create(user=new_user)
+            try:
+                profile = Profile.objects.get(user=new_user)
+            except Profile.DoesNotExist:
+                # If profile does not exist, create a new one
+                profile = Profile(user=new_user)
+                profile.save()
             username = form.cleaned_data.get("username")
             messages.success(
                 request,
