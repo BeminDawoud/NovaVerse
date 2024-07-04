@@ -42,7 +42,7 @@
 						<div>
 
 							{% if request.user == profile.user %}
-							<a class="btn btn-primary">Edit Profile</a>
+							<a href="{% url 'edit-profile' %}" class="btn btn-primary">Edit Profile</a>
 							{% else %}
 							{% if not follow_status %}
 							<a href="{% url 'follow' profile.user.username 1 %}" class="btn btn-primary">Follow</a>

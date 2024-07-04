@@ -40,9 +40,9 @@
 				<!-- ================ create-post ================ -->
 				<div class="create-post">
 					<div class="profile-photo">
-						<img src="{% static 'img/profile-1.jpg' %}">
+						<img src="{{profile.picture.url}}">
 					</div>
-					<input type="text" placeholder="What's on your mind" id="create-post">
+					<input type="text" placeholder="Share your Day!" id="create-post" readonly>
 					<a href="{% url 'new-post' %}"><input type="submit" class="btn btn-primary" value="create"></a>
 				</div>
 				<!-- ================ feeds ================ -->
