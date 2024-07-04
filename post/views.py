@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from post.models import Tag, Stream, Follow, Post, Likes
+from comment.models import Comment
 from post.forms import newPostForm
+from comment.forms import CommentForm
 from userauth.models import Profile
 
 
@@ -78,10 +80,26 @@ def postDetail(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     post_user_profile = Profile.objects.get(user=post.user)
     user_profile = Profile.objects.get(user=request.user)
+
+    comments = Comment.objects.filter(post=post).order_by("-date")
+    for comment in comments:
+        comment.profile = Profile.objects.get(user=comment.user)
+    if request.method == "POST":
+        form = CommentForm(request.POST, request.FILES)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.user = request.user
+            comment.save()
+            return HttpResponseRedirect(reverse("post-detail", args=[post_id]))
+    else:
+        form = CommentForm()
     context = {
         "post": post,
         "user_profile": user_profile,
         "post_user_profile": post_user_profile,
+        "comments": comments,
+        "form": form,
     }
     return render(request, "post-detail.html", context)
 

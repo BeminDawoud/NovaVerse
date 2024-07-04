@@ -7,6 +7,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="{% static 'style/home.css' %}">
+	<link rel="stylesheet" href="{% static 'style/postdetail.css' %}">
 	<link rel="icon" type="image/png" href="{% static 'img/Log/NovaVerse.svg' %}" sizes="32x32">
 	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 	<title>NovaVerse</title>
@@ -103,8 +104,30 @@
 								{% endfor %}
 							</p>
 						</div>
-						<div class="comment text-muted">
-							view all 277 comments
+						<div class="comments">
+
+							{% for comment in comments %}
+							<div class="comment">
+								<div class="photo">
+									<img src="{{comment.profile.picture.url}}">
+								</div>
+								<div class="body">
+									<h3>{{comment.user.username}}</h3>
+									<h4>{{comment.body}}</h4>
+									<h6 class="text-muted">{{comment.date}}</h6>
+								</div>
+							</div>
+							{% endfor %}
+
+						</div>
+						<div class="create-comment">
+							<form method="post">
+								{% csrf_token %}
+								<div class="input-group">
+									{{ form.body }}
+								</div>
+								<button type="submit" class="btn btn-primary">Comment</button>
+							</form>
 						</div>
 					</div>
 					<!-- ================ end of feed one ================ -->
@@ -113,6 +136,8 @@
 			<!-- ================ middle ================ -->
 		</div>
 	</main>
+	{% include 'themes.html' %}
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="{% static 'js/home.js' %}"></script>
 	<script>
