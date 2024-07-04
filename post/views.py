@@ -1,11 +1,15 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from post.models import Tag, Stream, Follow, Post, Likes
-from django.contrib.auth.decorators import login_required
 from post.forms import newPostForm
-from django.http import HttpResponseRedirect, JsonResponse
-from django.urls import reverse
+from userauth.models import Profile
+
+
+from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_protect
+from django.http import HttpResponseRedirect, JsonResponse
+from django.urls import reverse
+
 
 # Create your views here.
 
@@ -13,12 +17,22 @@ from django.views.decorators.csrf import csrf_protect
 def home(request):
     user = request.user
     posts = Stream.objects.filter(user=user)
-    group_ids = []
-    for post in posts:
-        group_ids.append(post.post_id)
+    group_ids = [post.post_id for post in posts]
     post_items = Post.objects.filter(id__in=group_ids).all().order_by("-posted")
+    profile = Profile.objects.get(user=user)
+
+    posts_with_profile = []
+    for post in post_items:
+        post_user_profile = Profile.objects.get(user=post.user)
+        post_data = {
+            "post": post,
+            "user_profile": post_user_profile,
+        }
+        posts_with_profile.append(post_data)
+
     context = {
-        "post_items": post_items,
+        "posts_with_profile": posts_with_profile,
+        "profile": profile,
     }
     return render(request, "home.html", context)
 
@@ -53,8 +67,12 @@ def newPost(request):
 
 def postDetail(request, post_id):
     post = get_object_or_404(Post, id=post_id)
+    post_user_profile = Profile.objects.get(user=post.user)
+    user_profile = Profile.objects.get(user=request.user)
     context = {
         "post": post,
+        "user_profile": user_profile,
+        "post_user_profile": post_user_profile,
     }
     return render(request, "post-detail.html", context)
 
@@ -79,12 +97,49 @@ def like(request, post_id):
     return JsonResponse({"likes": post.likes, "liked": liked})
 
 
+@login_required
+def favourite(request, post_id):
+    user = request.user
+    post = Post.objects.get(id=post_id)
+    profile = Profile.objects.get(user=user)
+    is_favourite = False
+    if profile.favourite.filter(id=post_id).exists():
+        profile.favourite.remove(post)
+        is_favourite = False
+    else:
+        profile.favourite.add(post)
+        is_favourite = True
+    response = {
+        "is_favourite": is_favourite,
+    }
+    return JsonResponse(response)
+
+
+@login_required
+def bookmark(request):
+    user = request.user
+    profile = Profile.objects.get(user=user)
+    post_items = profile.favourite.all()
+    profile = Profile.objects.get(user=user)
+
+    posts_with_profile = []
+    for post in post_items:
+        post_user_profile = Profile.objects.get(user=post.user)
+        post_data = {
+            "post": post,
+            "user_profile": post_user_profile,
+        }
+        posts_with_profile.append(post_data)
+
+    context = {
+        "posts_with_profile": posts_with_profile,
+        "profile": profile,
+    }
+    return render(request, "bookmarks.html", context)
+
+
 def messages(request):
     return render(request, "messages.html")
-
-
-def profile(request):
-    return render(request, "profile.html")
 
 
 def login(request):

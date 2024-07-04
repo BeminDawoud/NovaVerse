@@ -173,4 +173,3 @@ bg3.addEventListener('click', () => {
 
 	
 })
-
