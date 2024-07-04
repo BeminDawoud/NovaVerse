@@ -86,7 +86,7 @@ main .container{
 }
 
 .middle .messages-wrapper .input-bar{
-	display: none;
+	display: flex;
 	position: absolute;
 	bottom: 2%;
 	left: 2%;
@@ -147,8 +147,10 @@ main .container{
 
 
 .middle .messages .message .body h4{
-	color: rgb(56, 44, 44);
+	color: rgb(255, 255, 255);
 	padding: 0.5rem;
+	background: var(--btn-color);
+	border-radius: var(--border-radius);
 }
 
 .middle .messages .message .body h6{

@@ -48,11 +48,8 @@
 					</div>
 					<div class="chat">
 						<div class="no-messages">
-							<i class='bx bxl-messenger'></i>
-							<h4 class="text-muted">Send a message to start chat</h4>
 						</div>
 						<div class="messages">
-
 							{% for direct in directs %}
 							<div class="message 
 							{% if direct.sender == request.user %}
