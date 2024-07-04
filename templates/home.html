@@ -130,7 +130,8 @@
 					<div class="request">
 						<div class="info">
 							<div class="profile-photo">
-								<img src="{{ profile.picture.url }}" alt="">
+								<a href="{% url 'profile' profile.user.username %}"><img src="{{ profile.picture.url }}"
+										alt=""></a>
 							</div>
 							<div>
 								<h5>{{profile.first_name}} {{profile.first_name}}</h5>
