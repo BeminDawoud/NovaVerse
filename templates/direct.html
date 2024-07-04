@@ -52,13 +52,36 @@
 						<div class="no-messages">
 						</div>
 						<div class="messages">
-						</div>
-						<div class="input-bar">
-							<input type="text" id="message-input" placeholder="Type a message">
-							<button class="btn btn-primary" id="send-button">Send</button>
+							{% for direct in directs %}
+							<div class="message 
+							{% if direct.sender == request.user %}
+								sent
+								{% else %}
+								received
+							{% endif %}
+								">
+								<div class="photo">
+									<img src="{{direct.sender.profile.picture.url}}">
+								</div>
+								<div class="body">
+									<h4>{{direct.body}}</h4>
+									<h6 class="text-muted">{{direct.date|date:"d M, Y"}}</h6>
+								</div>
+							</div>
+							{% endfor %}
+
+
+							<!-- Messages will be displayed here -->
+							<div class="input-bar">
+								<form method="post" role="form" action="{% url 'send' %}">
+									{% csrf_token %}
+									<input type="hidden" name="to_user" value="{{active_direct}}">
+									<input name="body" type="text" class="form-control" placeholder="Type a message">
+									<button class="btn btn-primary" id="send-button">Send</button>
+								</form>
+							</div>
 						</div>
 					</div>
-
 				</div>
 			</div>
 			<!-- ================ middle ================ -->
