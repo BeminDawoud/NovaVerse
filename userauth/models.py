@@ -22,6 +22,7 @@ class Profile(models.Model):
         upload_to=user_directory_path,
         null=True,
         blank=True,
+        default="img/default.jpg",
         verbose_name="profile-Picture",
     )
     favourite = models.ManyToManyField(Post)
