@@ -50,9 +50,36 @@
 
 						</div>
 						<div class="account-stats">
-							<h4>1 <small>Post</small></h4>
-							<h4>152 <small>Followers</small></h4>
-							<h4>238 <small>Following</small></h4>
+							<div>
+								<h4>
+									{% if not post_count %}
+									0
+									{% else %}
+									{{post_count}}
+									{% endif %}
+								</h4>
+								<h5>Posts</h5>
+							</div>
+							<div>
+								<h4>
+									{% if not followers_count %}
+									0
+									{% else %}
+									{{followers_count}}
+									{% endif %}
+								</h4>
+								<h5>Followers</h5>
+							</div>
+							<div>
+								<h4>
+									{% if not following_count %}
+									0
+									{% else %}
+									{{following_count}}
+									{% endif %}
+								</h4>
+								<h5>Following</h5>
+							</div>
 						</div>
 					</div>
 				</div>

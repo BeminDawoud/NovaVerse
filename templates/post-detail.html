@@ -52,7 +52,9 @@
 									<img src="{{ post_user_profile.picture.url}}">
 								</div>
 								<div class="info">
-									<h3>{{ post.user.username }}</h3>
+									<a href="{% url 'profile' post.user.username %}">
+										<h3>{{ post.user.username }}</h3>
+									</a>
 									<small>{{ post.posted }}</small>
 								</div>
 							</div>
