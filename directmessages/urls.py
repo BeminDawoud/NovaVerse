@@ -7,4 +7,5 @@ urlpatterns = [
     path("messages/<username>", views.Directs, name="direct"),
     path("send", views.SendDirect, name="send"),
     path("send/<username>", views.NewMessage, name="new-message"),
+    path("search", views.userSearch, name="search"),
 ]
