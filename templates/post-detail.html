@@ -76,7 +76,7 @@
 								<span>
 									<a href="{% url 'like' post.id %}" class="like-button" data-id="{{ post.id }}">
 										<i id="like-icon-{{ post.id }}"
-											class='bx bxs-heart {% if post.user_liked %} liked {% endif %}'></i>
+											class='bx bxs-heart {% if post.liked %} liked {% endif %}'></i>
 									</a>
 								</span>
 								<span><i class='bx bxs-comment-detail'></i></span>
@@ -86,7 +86,7 @@
 								<span>
 									<a href="{% url 'favourite' post.id %}" class="favourite-button"
 										data-id="{{post.id}}">
-										<i class='bx bxs-bookmark'></i>
+										<i class='bx bxs-bookmark {% if post.is_favourite %} liked {% endif %}'></i>
 									</a>
 								</span>
 							</div>

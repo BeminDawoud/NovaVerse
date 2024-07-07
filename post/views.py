@@ -77,6 +77,8 @@ def postDetail(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     post_user_profile = Profile.objects.get(user=post.user)
     user_profile = Profile.objects.get(user=request.user)
+    post.liked = Likes.objects.filter(user=request.user, post=post).exists()
+    post.is_favourite = user_profile.favourite.filter(id=post.id).exists()
 
     comments = Comment.objects.filter(post=post).order_by("-date")
     for comment in comments:
