@@ -36,13 +36,9 @@
 				<div class="signUp-link">
 					<p>Don't have an account? <a href="{% url 'sign-up' %}" class="signUpBtn-link">Sign Up</a></p>
 				</div>
-				{% if messages %}
+				{% if form.non_field_errors %}
 				<div class="warning">
-					<ul class="messages">
-						{% for message in messages %}
-						<li>{{ message }}</li>
-						{% endfor %}
-					</ul>
+					{{ form.non_field_errors }}
 				</div>
 				{% endif %}
 			</form>
