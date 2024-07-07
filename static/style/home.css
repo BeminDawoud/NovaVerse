@@ -117,7 +117,7 @@ nav .search-bar input[type="search"]{
 	width: 30vw;
 	margin-left: 1rem;
 	font-size: 0.9rem;
-	color: var(--colour-white);
+	color: var(--colour-gray);
 }
 
 nav .create {

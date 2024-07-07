@@ -181,6 +181,7 @@ bg1.addEventListener('click', () => {
     root.style.setProperty('--colour-primary', 'hsl(252, 30%, 100%)');
     root.style.setProperty('--colour-primary-theme', '10, 41, 73');
     root.style.setProperty('--colour-secondary', 'hsl(252, 30%, 95%)');
+    root.style.setProperty('--colour-white', 'hsl(0, 78%, 4%)');
     document.querySelector('body').style.color = 'black';
     saveThemeSettings();
 });
