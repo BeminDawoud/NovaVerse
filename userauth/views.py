@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
 from django.urls import resolve, reverse
 from django.http import HttpResponseRedirect
-from post.models import Post, Follow, Stream
+from post.models import Post, Follow, Stream, Likes
 from userauth.models import Profile
 from django.core.paginator import Paginator
 from django.db import transaction
@@ -18,6 +18,10 @@ def userProfile(request, username):
     user = get_object_or_404(User, username=username)
     profile = Profile.objects.get(user=user)
     posts = Post.objects.filter(user=user).order_by("-posted")
+
+    for post in posts:
+        post.liked = Likes.objects.filter(user=user, post=post).exists()
+        post.is_favourite = profile.favourite.filter(id=post.id).exists()
 
     # profile stats
     post_count = Post.objects.filter(user=user).count()
