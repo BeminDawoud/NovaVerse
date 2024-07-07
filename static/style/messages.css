@@ -173,6 +173,41 @@ main .container{
 @media screen and (max-width: 700px) {
 	.messages-wrapper .contacts .contact .handle{
 		display: none;
+		margin-right: 0
+	}
+	.middle .messages .message .photo{
+		display: none;
+	}
+	.middle .messages .message.sent .body h4{
+		color: rgb(255, 255, 255);
+		padding: 0.5rem;
+		background: #4de3b8;
+		border-radius: var(--border-radius);
+	}
+	
+	.middle .messages .message .body {
+		border-radius: 0;
+		padding: 0;
+	}
+	.middle .messages-wrapper .input-bar input[type="text"]{
+		background: transparent;
+		color: white;
+		width: 20vw;
+	}
+	.middle .messages-wrapper .input-bar {
+		margin-bottom: -2rem;
+	}
+	.btn{
+		width: 50px;
+		text-align: start;
+		flex-wrap: wrap;
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	
+	.middle .messages-wrapper .input-bar {
+		margin-bottom: -1rem;
 	}
 }
 
@@ -224,4 +259,3 @@ main .container{
     border: 1px solid #ccc;
     border-radius: var(--border-radius);
 }
-

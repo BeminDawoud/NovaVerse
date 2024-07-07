@@ -20,18 +20,21 @@ main .container{
 .result{
 	display: flex;
 	flex-direction: row;
-	justify-content: space-around;
+	justify-content: space-between;
 	background-color: var(--colour-secondary);
 	padding: var(--card-padding);
 	border-radius: var(--card-border-radius);
-	width: 60%;
+	width: 45vw;
+
 }
 
 .result .info{
 	display: flex;
 	gap: 1rem;
 	margin-bottom: 1rem;
+	flex-wrap: wrap;
 	align-items: center;
+	width: fit-content;
 }
 
 .result .action{
@@ -39,4 +42,33 @@ main .container{
 	justify-content: center;
 	align-items: center;
 	gap: 1rem;
+}
+
+
+
+
+
+
+
+@media (max-width: 900px) {
+    .results {
+        margin-left: 0;
+		margin-right: -7rem;
+    }
+    .result {
+        width: 90vw;
+        flex-direction: column;
+    }
+    .result .info {
+        width: 100%;
+        justify-content: center;
+    }
+    .result .action {
+        width: 100%;
+        justify-content: center;
+    }
+
+	main .container{
+	gap: 0rem;
+	}
 }
