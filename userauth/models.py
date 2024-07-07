@@ -31,7 +31,9 @@ class Profile(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.user.first_name
+        if self.user.first_name:
+            return self.user.first_name
+        return f"user{self.user.id}"
 
 
 def create_user_profile(sender, instance, created, **kwargs):

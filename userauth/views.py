@@ -63,8 +63,8 @@ def follow(request, username, option):
 
 
 def editProfile(request):
-    user = request.user.id
-    profile = Profile.objects.get(user__id=user)
+    user = request.user
+    profile = Profile.objects.get(user__id=user.id)
 
     if request.method == "POST":
         form = EditProfileForm(request.POST, request.FILES, instance=profile)
@@ -75,6 +75,10 @@ def editProfile(request):
             profile.location = form.cleaned_data.get("location")
             profile.bio = form.cleaned_data.get("bio")
             profile.save()
+
+            user.first_name = form.cleaned_data.get("first_name")
+            user.last_name = form.cleaned_data.get("last_name")
+            user.save()
             return redirect("profile", profile.user.username)
     else:
         form = EditProfileForm(instance=profile)
