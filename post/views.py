@@ -22,15 +22,12 @@ def home(request):
     posts = Stream.objects.filter(user=user)
     group_ids = [post.post_id for post in posts]
     post_items = Post.objects.filter(id__in=group_ids).all().order_by("-posted")
-    profile = Profile.objects.get_or_create(user=user)
-    posts_with_profile = []
+    profile = Profile.objects.get(user=user)
     for post in post_items:
+        post.liked = Likes.objects.filter(user=user, post=post).exists()
+        post.is_favourite = profile.favourite.filter(id=post.id).exists()
         post_user_profile = Profile.objects.get(user=post.user)
-        post_data = {
-            "post": post,
-            "user_profile": post_user_profile,
-        }
-        posts_with_profile.append(post_data)
+        post.profilePicture = post_user_profile.picture
 
     # unfollowed users
     all_users = User.objects.exclude(id=user.id)
@@ -41,7 +38,7 @@ def home(request):
     unfollowed_users_profiles = Profile.objects.filter(user__in=unfollowed_users)
 
     context = {
-        "posts_with_profile": posts_with_profile,
+        "posts": post_items,
         "profile": profile,
         "unfollowed_users_profiles": unfollowed_users_profiles,
     }
