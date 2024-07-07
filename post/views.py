@@ -148,17 +148,14 @@ def bookmark(request):
     post_items = profile.favourite.all()
     profile = Profile.objects.get(user=user)
 
-    posts_with_profile = []
     for post in post_items:
+        post.liked = Likes.objects.filter(user=user, post=post).exists()
+        post.is_favourite = profile.favourite.filter(id=post.id).exists()
         post_user_profile = Profile.objects.get(user=post.user)
-        post_data = {
-            "post": post,
-            "user_profile": post_user_profile,
-        }
-        posts_with_profile.append(post_data)
+        post.profilePicture = post_user_profile.picture
 
     context = {
-        "posts_with_profile": posts_with_profile,
+        "posts": post_items,
         "profile": profile,
     }
     return render(request, "bookmarks.html", context)
