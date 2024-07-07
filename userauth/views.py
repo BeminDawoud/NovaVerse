@@ -18,10 +18,11 @@ def userProfile(request, username):
     user = get_object_or_404(User, username=username)
     profile = Profile.objects.get(user=user)
     posts = Post.objects.filter(user=user).order_by("-posted")
+    logged_user_profile = Profile.objects.get(user=request.user)
 
     for post in posts:
-        post.liked = Likes.objects.filter(user=user, post=post).exists()
-        post.is_favourite = profile.favourite.filter(id=post.id).exists()
+        post.liked = Likes.objects.filter(user=request.user, post=post).exists()
+        post.is_favourite = logged_user_profile.favourite.filter(id=post.id).exists()
 
     # profile stats
     post_count = Post.objects.filter(user=user).count()
