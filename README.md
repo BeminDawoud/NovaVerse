@@ -46,7 +46,7 @@ The **NovaVerse** project was developed as part of our coursework at ALX Holbert
 
 # Further enhancements that could be made
 
-- **Implementing Reseting Password**: Implementing more intuitive UI/UX elements.
+- **Implementing Reseting Password**: Implementing reseting password through django.
 - **Integration of messaging websockets**: Adding websocket functionality to the chat to make it asynchronous.
 - **Notifiction functionalities**: Refactoring code for improved performance and scalability.
 
