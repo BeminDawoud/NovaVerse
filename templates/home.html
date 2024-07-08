@@ -58,7 +58,7 @@
 						<div class="head">
 							<div class="user">
 								<div class="profile-photo">
-									<img src="{{ post.profilePicture }}">
+									<img src="{{ post.profilePicture.url }}">
 								</div>
 								<div class="info">
 									<a href="{% url 'profile' post.user.username %}">
@@ -72,7 +72,7 @@
 							</span>
 						</div>
 						<div class="photo">
-							<a href="{% url 'post-detail' post.id %}"><img src="{{ post.picture }}"></a>
+							<a href="{% url 'post-detail' post.id %}"><img src="{{ post.picture.url }}"></a>
 						</div>
 
 						<div class="action-buttons">
