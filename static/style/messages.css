@@ -144,14 +144,18 @@ main .container{
 	color: rgb(255, 255, 255);
 	padding: 0.5rem;
 	background: #4de3b8;
-	border-radius: var(--border-radius);
+	border-bottom-right-radius: var(--border-radius);
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
 }
 
 .middle .messages .message.received .body h4{
 	color: rgb(255, 255, 255);
 	padding: 0.5rem;
 	background: #e6937a;
-	border-radius: var(--border-radius);
+	border-bottom-right-radius: var(--border-radius);
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
 }
 
 .middle .messages .message .body h6{
