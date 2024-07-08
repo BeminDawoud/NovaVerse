@@ -101,7 +101,7 @@ main .container{
 
 .middle .messages-wrapper .input-bar input[type="text"]{
 	background: transparent;
-	color: white;
+	color: var(--btn-color);
 	width: 43vw;
 }
 
