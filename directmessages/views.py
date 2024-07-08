@@ -9,8 +9,17 @@ from django.db.models import Q
 
 
 # Create your views here.
+
+
 @login_required
 def inbox(request):
+    """
+    View for displaying the user's inbox with messages.
+
+    Retrieves messages for the logged-in user, and retrieves user profile for display.
+
+    Template: messages.html
+    """
     user = request.user
     messages = Message.get_message(user=request.user)
     active_direct = None
@@ -37,6 +46,13 @@ def inbox(request):
 
 @login_required
 def Directs(request, username):
+    """
+    View for displaying direct messages with a specific user.
+
+    Retrieves messages between the logged-in user and the specified username.
+
+    Template: direct.html
+    """
     user = request.user
     messages = Message.get_message(user=user)
     active_direct = username
@@ -55,6 +71,12 @@ def Directs(request, username):
 
 
 def SendDirect(request):
+    """
+    View for sending a direct message to another user.
+
+    Accepts POST request with 'to_user' and 'body' parameters, sends message,
+    and redirects to the direct messages view for the recipient user.
+    """
     from_user = request.user
     to_user_username = request.POST.get("to_user")
     body = request.POST.get("body")
@@ -68,6 +90,13 @@ def SendDirect(request):
 
 
 def NewMessage(request, username):
+    """
+    View for sending a new direct message to a specific user.
+
+    Automatically sends a default message ('Hey!') from the logged-in user
+    to the specified username and redirects to the direct messages view for
+    the recipient user.
+    """
     from_user = request.user
     body = "Hey!"
     to_user = User.objects.get(username=username)
@@ -77,6 +106,14 @@ def NewMessage(request, username):
 
 
 def userSearch(request):
+    """
+    View for searching users based on username.
+
+    Retrieves users matching the search query, paginates results,
+    and checks follow status for each user relative to the logged-in user.
+
+    Template: search.html
+    """
     query = request.GET.get("q")
     users_paginator = None  # Initialize users_paginator
 

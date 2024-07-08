@@ -14,7 +14,17 @@ from django.db import IntegrityError
 
 
 # Create your views here.
+
+
 def userProfile(request, username):
+    """
+    View for displaying user profile details.
+
+    Retrieves user's profile information, posts, and profile statistics.
+    Checks if logged-in user follows the profile owner.
+
+    Template: profile.html
+    """
     user = get_object_or_404(User, username=username)
     profile = Profile.objects.get(user=user)
     posts = Post.objects.filter(user=user).order_by("-posted")
@@ -24,7 +34,6 @@ def userProfile(request, username):
         post.liked = Likes.objects.filter(user=request.user, post=post).exists()
         post.is_favourite = logged_user_profile.favourite.filter(id=post.id).exists()
 
-    # profile stats
     post_count = Post.objects.filter(user=user).count()
     following_count = Follow.objects.filter(follower=user).count()
     followers_count = Follow.objects.filter(following=user).count()
@@ -42,6 +51,16 @@ def userProfile(request, username):
 
 
 def follow(request, username, option):
+    """
+    View for following/unfollowing a user.
+
+    Accepts POST request to follow or unfollow a user based on option (0 or 1).
+    Updates the follow status and streams for the logged-in user.
+
+    Redirects to the user's profile page after action.
+
+    Requires: @login_required decorator.
+    """
     user = request.user
     following = get_object_or_404(User, username=username)
     try:
@@ -63,6 +82,14 @@ def follow(request, username, option):
 
 
 def editProfile(request):
+    """
+    View for editing user profile details.
+
+    Retrieves logged-in user's profile details and allows editing of profile fields.
+    Updates both user and profile models upon form submission.
+
+    Template: edit-profile.html
+    """
     user = request.user
     profile = Profile.objects.get(user__id=user.id)
 
@@ -82,6 +109,7 @@ def editProfile(request):
             return redirect("profile", profile.user.username)
     else:
         form = EditProfileForm(instance=profile)
+
     context = {
         "form": form,
     }
@@ -89,6 +117,15 @@ def editProfile(request):
 
 
 def register(request):
+    """
+    View for user registration.
+
+    Accepts POST request to register a new user.
+    Creates a new user and corresponding profile upon successful registration.
+    Logs in the user automatically upon registration.
+
+    Template: signup.html
+    """
     if request.method == "POST":
         form = UserRegisterForm(request.POST)
         if form.is_valid():
@@ -99,6 +136,7 @@ def register(request):
                 # If profile does not exist, create a new one
                 profile = Profile(user=new_user)
                 profile.save()
+
             username = form.cleaned_data.get("username")
             messages.success(
                 request,
@@ -139,6 +177,12 @@ def register(request):
 
 
 def custom_logout(request):
+    """
+    View for logging out a user.
+
+    Logs out the current user and redirects to the sign-in page.
+
+    """
     logout(request)
     messages.success(
         request, "You have been logged out successfully."

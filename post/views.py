@@ -18,18 +18,26 @@ from django.urls import reverse
 
 
 def home(request):
+    """
+    View for displaying the home page with user's posts and unfollowed users.
+
+    Retrieves posts from followed users, unfollowed users' profiles, and
+    marks posts as liked and favorite for the logged-in user.
+
+    Template: home.html
+    """
     user = request.user
     posts = Stream.objects.filter(user=user)
     group_ids = [post.post_id for post in posts]
     post_items = Post.objects.filter(id__in=group_ids).all().order_by("-posted")
     profile = Profile.objects.get(user=user)
+
     for post in post_items:
         post.liked = Likes.objects.filter(user=user, post=post).exists()
         post.is_favourite = profile.favourite.filter(id=post.id).exists()
         post_user_profile = Profile.objects.get(user=post.user)
         post.profilePicture = post_user_profile.picture
 
-    # unfollowed users
     all_users = User.objects.exclude(id=user.id)
     followed_users = Follow.objects.filter(follower=user).values_list(
         "following", flat=True
@@ -46,6 +54,14 @@ def home(request):
 
 
 def newPost(request):
+    """
+    View for creating a new post.
+
+    Accepts POST request with form data, creates a new post with associated tags,
+    and redirects to the home page upon successful creation.
+
+    Template: post.html
+    """
     user = request.user.id
     tags_objs = []
 
@@ -67,6 +83,7 @@ def newPost(request):
             return redirect("home")
     else:
         form = newPostForm()
+
     context = {
         "form": form,
     }
@@ -74,6 +91,14 @@ def newPost(request):
 
 
 def postDetail(request, post_id):
+    """
+    View for displaying detailed view of a post.
+
+    Retrieves post details, associated comments, and marks if post is liked
+    and favorite for the logged-in user. Allows users to add comments.
+
+    Template: post-detail.html
+    """
     post = get_object_or_404(Post, id=post_id)
     post_user_profile = Profile.objects.get(user=post.user)
     user_profile = Profile.objects.get(user=request.user)
@@ -83,6 +108,7 @@ def postDetail(request, post_id):
     comments = Comment.objects.filter(post=post).order_by("-date")
     for comment in comments:
         comment.profile = Profile.objects.get(user=comment.user)
+
     if request.method == "POST":
         form = CommentForm(request.POST, request.FILES)
         if form.is_valid():
@@ -93,6 +119,7 @@ def postDetail(request, post_id):
             return HttpResponseRedirect(reverse("post-detail", args=[post_id]))
     else:
         form = CommentForm()
+
     context = {
         "post": post,
         "user_profile": user_profile,
@@ -106,6 +133,14 @@ def postDetail(request, post_id):
 @csrf_protect
 @require_POST
 def like(request, post_id):
+    """
+    View for handling like/unlike functionality for a post.
+
+    Accepts POST request to like or unlike a post based on current user.
+    Returns JSON response with updated like count and status.
+
+    Requires: @csrf_protect, @require_POST decorators.
+    """
     user = request.user
     post = Post.objects.get(id=post_id)
     liked = Likes.objects.filter(user=user, post=post).exists()
@@ -125,16 +160,26 @@ def like(request, post_id):
 
 @login_required
 def favourite(request, post_id):
+    """
+    View for marking a post as favorite/unfavorite for the logged-in user.
+
+    Accepts POST request to add or remove a post from user's favorites.
+    Returns JSON response with updated favorite status.
+
+    Requires: @login_required decorator.
+    """
     user = request.user
     post = Post.objects.get(id=post_id)
     profile = Profile.objects.get(user=user)
     is_favourite = False
+
     if profile.favourite.filter(id=post_id).exists():
         profile.favourite.remove(post)
         is_favourite = False
     else:
         profile.favourite.add(post)
         is_favourite = True
+
     response = {
         "is_favourite": is_favourite,
     }
@@ -143,10 +188,17 @@ def favourite(request, post_id):
 
 @login_required
 def bookmark(request):
+    """
+    View for displaying user's bookmarked posts.
+
+    Retrieves user's favorite posts, marks if liked and favorite,
+    and displays in bookmarks template.
+
+    Template: bookmarks.html
+    """
     user = request.user
     profile = Profile.objects.get(user=user)
     post_items = profile.favourite.all()
-    profile = Profile.objects.get(user=user)
 
     for post in post_items:
         post.liked = Likes.objects.filter(user=user, post=post).exists()
