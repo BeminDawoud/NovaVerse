@@ -17,6 +17,7 @@ from django.urls import reverse
 # Create your views here.
 
 
+@login_required
 def home(request):
     """
     View for displaying the home page with user's posts and unfollowed users.
