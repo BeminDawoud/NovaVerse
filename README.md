@@ -1,4 +1,4 @@
-# ALX Portfolio Project - NovaVerse
+# NovaVerse
 
 ![Screenshot 2024-07-08 170710](https://github.com/MariaGeorge22/NovaVerse/assets/69398996/24a68d0f-a7c2-4dcc-bcbe-6168a883cbfc)
 
@@ -8,9 +8,11 @@
 
 ![Screenshot 2024-07-08 171137](https://github.com/MariaGeorge22/NovaVerse/assets/69398996/7e48a4e0-b0af-43f0-b1d4-b3a3f9913259)
 
-## Introduction
+## Live website
+   (https://novaverse.pythonanywhere.com/)
 
-The **NovaVerse** project was developed as part of our coursework at ALX Holberton School, aiming to showcase the skills and knowledge acquired during our time in the program.
+## Video Demo
+   (https://youtu.be/YYSjvyz8ric)
 
 # Features
 
@@ -54,5 +56,3 @@ The **NovaVerse** project was developed as part of our coursework at ALX Holbert
 ## Authors
 
 Bemin Dawoud: (https://github.com/BeminDawoud)
-
-Maria George: (https://github.com/MariaGeorge22)
